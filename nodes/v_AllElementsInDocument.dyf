@@ -1,0 +1,165 @@
+{
+  "Uuid": "dcfa6e63-0dc7-429c-8613-be04a5ca8562",
+  "IsCustomNode": true,
+  "Category": "v-nodes.Revit.Selection",
+  "Description": "",
+  "Name": "v_AllElementsInDocument",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "refresh",
+        "TypeName": "bool",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "a6f815d3d7144328bb0613dafb9e697a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "9f39601ad9ca4601a353e63bb72f7aa6",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "Elements",
+      "Id": "b5c2d56c00ac4b12a865676663fc1018",
+      "Inputs": [
+        {
+          "Id": "903c0a8708f0442a9847e939c294b3be",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "author = \"Vladyslav M\"\r\nurl = \"https://github.com/vlmarch/dynamo-v-nodes\"\r\n\r\nimport clr\r\nclr.AddReference(\"RevitAPI\")\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference(\"RevitServices\")\r\nfrom RevitServices.Persistence import DocumentManager\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\n\r\nrefresh = IN[0]\r\n\r\nOUT = FilteredElementCollector(doc).WhereElementIsNotElementType().ToElements()",
+      "VariableInputPorts": true,
+      "Id": "d40041f8a71f467dae31b7b3aad25fa2",
+      "Inputs": [
+        {
+          "Id": "cccc5689c46849ef99b2c1d881554896",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "26aa79bf57c549229057af1d9036aa88",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "9f39601ad9ca4601a353e63bb72f7aa6",
+      "End": "cccc5689c46849ef99b2c1d881554896",
+      "Id": "6b89580227e5452c93263b73210b0a87"
+    },
+    {
+      "Start": "26aa79bf57c549229057af1d9036aa88",
+      "End": "903c0a8708f0442a9847e939c294b3be",
+      "Id": "a8b506b6e1334acfa6ccd6eddc93178c"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.3.0.5885",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "a6f815d3d7144328bb0613dafb9e697a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 64.631351533596018,
+        "Y": 230.47328461253073
+      },
+      {
+        "Id": "b5c2d56c00ac4b12a865676663fc1018",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 473.612887983597,
+        "Y": 231.3979713096966
+      },
+      {
+        "Id": "d40041f8a71f467dae31b7b3aad25fa2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 303.46587537092012,
+        "Y": 231.13056379821933
+      }
+    ],
+    "Annotations": [],
+    "X": -283.89128842788648,
+    "Y": -268.044833532946,
+    "Zoom": 2.45244625
+  }
+}

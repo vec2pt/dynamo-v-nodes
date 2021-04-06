@@ -1,0 +1,215 @@
+{
+  "Uuid": "86a16f0d-2881-4fd0-bf32-b718dfc83c37",
+  "IsCustomNode": true,
+  "Category": "v-nodes.About",
+  "Description": "",
+  "Name": "v_PythonBoilerplate",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "author = \"Vladyslav M\"\r\nurl = \"https://github.com/vlmarch/dynamo-v-nodes\"\r\n\r\nimport clr\r\nimport urllib\r\n\r\nclr.AddReference('System.Windows.Forms')\r\nclr.AddReference('System.Drawing')\r\nfrom System.Windows import *\r\nfrom System.Drawing import Point, Size\r\nfrom System.Windows.Forms import Application, Form, RichTextBox\r\n\r\nclass TextBoxForm(Form):\r\n\tdef __init__(self, msg):\r\n\t\tself.Name = \"Python boilerplate\"\r\n\t\tself.Text = \"Python boilerplate\"\r\n\t\tself.Size = Size(500, 700)\r\n        \r\n\t\tself.textbox = RichTextBox()\r\n\t\tself.textbox.Text=str(msg)\r\n\t\tself.textbox.Location = Point(0,0)\r\n\t\tself.textbox.Size = self.Size\r\n\t\t\r\n\t\tself.Controls.Add(self.textbox)         \r\n\r\nif IN[0] == True:\r\n\turl = \"https://raw.githubusercontent.com/vlmarch/revit-python-boilerplate/main/PythonTemplate.py\"\r\n\tf = urllib.urlopen(url)\r\n\tboilerplate = f.read()\r\n\tif IN[1] == True:\r\n\t\tform = TextBoxForm(boilerplate)\r\n\t\tApplication.Run(form)\r\n\t\r\n\tOUT = boilerplate\r\nelse:\r\n\tOUT = \"Pause\"",
+      "VariableInputPorts": true,
+      "Id": "b2575b953a604fe4a156354606bdf0bf",
+      "Inputs": [
+        {
+          "Id": "ad5ae07be2fb42b0a9380e4cfebe32f7",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "03698becf6a6455390fb4c5d71745c74",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ced28a2794ab451a9a985f2f95bae937",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "run_it",
+        "TypeName": "bool",
+        "TypeRank": 0,
+        "DefaultValue": "false",
+        "Description": ""
+      },
+      "Id": "50ecafcc45374d4198fbf7414f596d7a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "372a43a9e83d4904a04b7dcf23b6b9d2",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "boilerplate",
+      "Id": "43e5adaa748c4deb805ead86e06d11af",
+      "Inputs": [
+        {
+          "Id": "07dfd048fb2249b5b66e06dc022ce8f2",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "show_form",
+        "TypeName": "bool",
+        "TypeRank": 0,
+        "DefaultValue": "false",
+        "Description": ""
+      },
+      "Id": "bca32144ce964dff80172a60f3862e63",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b275eab0ff8545d2a4114abb67b3647b",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "ced28a2794ab451a9a985f2f95bae937",
+      "End": "07dfd048fb2249b5b66e06dc022ce8f2",
+      "Id": "1a004b19182d419a9caf74476846b32d"
+    },
+    {
+      "Start": "372a43a9e83d4904a04b7dcf23b6b9d2",
+      "End": "ad5ae07be2fb42b0a9380e4cfebe32f7",
+      "Id": "5c56c8d46fed4eaabbdb14e4c4984777"
+    },
+    {
+      "Start": "b275eab0ff8545d2a4114abb67b3647b",
+      "End": "03698becf6a6455390fb4c5d71745c74",
+      "Id": "cb62fbf4063e4eb0b526cd0bdba2539a"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.3.0.5885",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "b2575b953a604fe4a156354606bdf0bf",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 620.255608407049,
+        "Y": 471.705069613191
+      },
+      {
+        "Id": "50ecafcc45374d4198fbf7414f596d7a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 362.46574245863258,
+        "Y": 458.25859814127887
+      },
+      {
+        "Id": "43e5adaa748c4deb805ead86e06d11af",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 775.02062203669448,
+        "Y": 472.3479377963306
+      },
+      {
+        "Id": "bca32144ce964dff80172a60f3862e63",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 340.19429773934087,
+        "Y": 522.69501915412684
+      }
+    ],
+    "Annotations": [],
+    "X": -289.13781168885737,
+    "Y": -136.67923365805245,
+    "Zoom": 1.2777169841077238
+  }
+}

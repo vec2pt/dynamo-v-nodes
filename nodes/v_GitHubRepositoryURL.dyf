@@ -1,0 +1,165 @@
+{
+  "Uuid": "1baf2af7-d96d-4c29-9f78-3568f2ae11e2",
+  "IsCustomNode": true,
+  "Category": "v-nodes.About",
+  "Description": "Display GitHub repository using the default browser.",
+  "Name": "v_GitHubRepositoryURL",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "author = \"Vladyslav M\"\r\nurl = \"https://github.com/vlmarch/dynamo-v-nodes\"\r\n\r\nimport clr\r\nimport sys\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib')\r\n\r\nimport webbrowser\r\n\r\nif IN[0]: webbrowser.open(url)\r\n\r\nOUT = url",
+      "VariableInputPorts": true,
+      "Id": "838414b136a94a3babb7c71a3fa30725",
+      "Inputs": [
+        {
+          "Id": "943382a00e744e4d8b9a5d91011bf704",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "aa9fd6d78215406f9658e46db30650cf",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "open_url",
+        "TypeName": "bool",
+        "TypeRank": 0,
+        "DefaultValue": "false",
+        "Description": ""
+      },
+      "Id": "5c6b44bc23a24dc7bd78716d3d501036",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8bc86908a81444729cc39c2992d2359b",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "url",
+      "Id": "155f8351dda1433c998b76b3f323da5b",
+      "Inputs": [
+        {
+          "Id": "177cab44896d4edd8fc63b2606aaa874",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "aa9fd6d78215406f9658e46db30650cf",
+      "End": "177cab44896d4edd8fc63b2606aaa874",
+      "Id": "7201cc5aea8944339c91c3b2042c7131"
+    },
+    {
+      "Start": "8bc86908a81444729cc39c2992d2359b",
+      "End": "943382a00e744e4d8b9a5d91011bf704",
+      "Id": "23153fec0b924d45a0d24fcda6a49aa7"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.3.0.5885",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "838414b136a94a3babb7c71a3fa30725",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 612.30163745008872,
+        "Y": 262.969639500483
+      },
+      {
+        "Id": "5c6b44bc23a24dc7bd78716d3d501036",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 398.12917335128884,
+        "Y": 264.36423555405929
+      },
+      {
+        "Id": "155f8351dda1433c998b76b3f323da5b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 759.84910857527609,
+        "Y": 261.51939492084864
+      }
+    ],
+    "Annotations": [],
+    "X": -595.80608730622862,
+    "Y": -252.44677087478169,
+    "Zoom": 2.080710428125
+  }
+}
