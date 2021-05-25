@@ -86,7 +86,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "if IN[1] <= 0: OUT = str(int(round(IN[0], IN[1])))\r\nelse: OUT = str(round(IN[0], IN[1]))",
+      "Code": "\r\nnumber = IN[0]\r\ndigits = IN[1]\r\ntrailing = IN[2]\r\n\r\nval = round(number, digits)\r\nif val == int(val):\r\n\tif trailing and digits>0: OUT = str(val) + \"0\"*(digits-1)\r\n\telse: OUT = str(val).rstrip(\"0\").rstrip(\".\")\r\nelse:\r\n\tif trailing: OUT = str(val).split(\".\")[0] +\".\"+ str(val).split(\".\")[1] + \"0\"*(digits - len(str(val).split(\".\")[1]))\r\n\telse: OUT = str(val)",
       "VariableInputPorts": true,
       "Id": "31803a588604476e9a863eb4a83509e1",
       "Inputs": [
@@ -107,6 +107,15 @@
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
+        },
+        {
+          "Id": "602d1a6dfc04470c8b1ea6e17687e3d4",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
         }
       ],
       "Outputs": [
@@ -122,6 +131,32 @@
       ],
       "Replication": "Disabled",
       "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "trailing_0",
+        "TypeName": "bool",
+        "TypeRank": 0,
+        "DefaultValue": "true",
+        "Description": ""
+      },
+      "Id": "d9fceee315fb41d48f95679112d45fb2",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a6c6adbd97e64a77b20303a0439bac81",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
     }
   ],
   "Connectors": [
@@ -139,6 +174,11 @@
       "Start": "57bbdddfa7154d18a488254aba811884",
       "End": "6f8fc488f97d4e5d8004ccea4ea5f393",
       "Id": "9b3c0b80b2584f9881608aa2e64e3cad"
+    },
+    {
+      "Start": "a6c6adbd97e64a77b20303a0439bac81",
+      "End": "602d1a6dfc04470c8b1ea6e17687e3d4",
+      "Id": "4963529709e04ae1b83325c91f72d5d5"
     }
   ],
   "Dependencies": [],
@@ -155,61 +195,71 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -17.0,
-      "EyeY": 24.0,
-      "EyeZ": 50.0,
-      "LookX": 12.0,
-      "LookY": -13.0,
-      "LookZ": -58.0,
+      "EyeX": -771593.05429973069,
+      "EyeY": 835898.058824709,
+      "EyeZ": 3729334.2624486974,
+      "LookX": 771588.05429973069,
+      "LookY": -835887.058824709,
+      "LookZ": -3729342.2624486974,
       "UpX": 0.0,
       "UpY": 1.0,
       "UpZ": 0.0
     },
     "NodeViews": [
       {
+        "ShowGeometry": true,
+        "Name": "Input",
         "Id": "5c6b27ba272e4449a2ff5cdd0f7eda43",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Input",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 430.57533393199014,
         "Y": 1054.4459493632594
       },
       {
+        "ShowGeometry": true,
+        "Name": "Input",
         "Id": "5012700c8a984e108b5cdf4626993834",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Input",
-        "ShowGeometry": true,
         "Excluded": false,
-        "X": 426.5346101595087,
-        "Y": 1143.7359261689337
+        "X": 430.23746262780026,
+        "Y": 1119.6673851250387
       },
       {
+        "ShowGeometry": true,
+        "Name": "Output",
         "Id": "bce000cc9a944905b2a3193424c0a41c",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Output",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 779.23851560544438,
         "Y": 1076.1760955512634
       },
       {
+        "ShowGeometry": true,
+        "Name": "Python Script",
         "Id": "31803a588604476e9a863eb4a83509e1",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Python Script",
-        "ShowGeometry": true,
         "Excluded": false,
-        "X": 620.16597080954648,
-        "Y": 1076.0011549171143
+        "X": 620.165970809546,
+        "Y": 1075.3840128390614
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "d9fceee315fb41d48f95679112d45fb2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 364.16919426689645,
+        "Y": 1177.9301939640516
       }
     ],
     "Annotations": [],
-    "X": -443.56352864958751,
-    "Y": -1454.6555427743717,
+    "X": -407.56352864958751,
+    "Y": -1509.6555427743717,
     "Zoom": 1.6203724159629527
   }
 }

@@ -1,15 +1,46 @@
 {
-  "Uuid": "dcfa6e63-0dc7-429c-8613-be04a5ca8562",
+  "Uuid": "8a24f6ff-fe7b-4037-a631-1689e4879ad2",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Selection",
   "Description": "",
-  "Name": "v_AllElementsInDocument",
+  "Name": "v_AllTypesInDocument",
   "ElementResolver": {
     "ResolutionMap": {}
   },
   "Inputs": [],
   "Outputs": [],
   "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\nclr.AddReference(\"RevitAPI\")\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference(\"RevitServices\")\r\nfrom RevitServices.Persistence import DocumentManager\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\n\r\nrefresh = IN[0]\r\n\r\nOUT = FilteredElementCollector(doc).WhereElementIsElementType().ToElements()",
+      "VariableInputPorts": true,
+      "Id": "ab6e567fc2cc4083b9889f76f60d04c6",
+      "Inputs": [
+        {
+          "Id": "cfeffc4b7c174b6e856e8eed6b786431",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ab8eb1c50c0842f583da733a85e67e60",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
       "NodeType": "InputNode",
@@ -20,11 +51,11 @@
         "DefaultValue": "true",
         "Description": ""
       },
-      "Id": "a6f815d3d7144328bb0613dafb9e697a",
+      "Id": "636e9b77203743229720508d37fe5b42",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "9f39601ad9ca4601a353e63bb72f7aa6",
+          "Id": "8acae3ed7c534897877783f8397aae9f",
           "Name": "",
           "Description": "Symbol",
           "UsingDefaultValue": false,
@@ -40,11 +71,11 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "Elements",
-      "Id": "b5c2d56c00ac4b12a865676663fc1018",
+      "Symbol": "Elements;",
+      "Id": "fd2144cff4304d0c919daf243cbce53e",
       "Inputs": [
         {
-          "Id": "903c0a8708f0442a9847e939c294b3be",
+          "Id": "7498cc190078483d81d93049224755a1",
           "Name": "",
           "Description": "",
           "UsingDefaultValue": false,
@@ -56,49 +87,18 @@
       "Outputs": [],
       "Replication": "Disabled",
       "Description": "A function output, use with custom nodes"
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "import clr\r\nclr.AddReference(\"RevitAPI\")\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference(\"RevitServices\")\r\nfrom RevitServices.Persistence import DocumentManager\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\n\r\nrefresh = IN[0]\r\n\r\nOUT = FilteredElementCollector(doc).WhereElementIsNotElementType().ToElements()",
-      "VariableInputPorts": true,
-      "Id": "d40041f8a71f467dae31b7b3aad25fa2",
-      "Inputs": [
-        {
-          "Id": "cccc5689c46849ef99b2c1d881554896",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "26aa79bf57c549229057af1d9036aa88",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded IronPython script."
     }
   ],
   "Connectors": [
     {
-      "Start": "9f39601ad9ca4601a353e63bb72f7aa6",
-      "End": "cccc5689c46849ef99b2c1d881554896",
-      "Id": "6b89580227e5452c93263b73210b0a87"
+      "Start": "ab8eb1c50c0842f583da733a85e67e60",
+      "End": "7498cc190078483d81d93049224755a1",
+      "Id": "ae847e6ae34d4595ae063fe661e0c7ea"
     },
     {
-      "Start": "26aa79bf57c549229057af1d9036aa88",
-      "End": "903c0a8708f0442a9847e939c294b3be",
-      "Id": "a8b506b6e1334acfa6ccd6eddc93178c"
+      "Start": "8acae3ed7c534897877783f8397aae9f",
+      "End": "cfeffc4b7c174b6e856e8eed6b786431",
+      "Id": "1e63362757f74ae7b578de398e3f2bff"
     }
   ],
   "Dependencies": [],
@@ -128,38 +128,38 @@
     "NodeViews": [
       {
         "ShowGeometry": true,
-        "Name": "Input",
-        "Id": "a6f815d3d7144328bb0613dafb9e697a",
+        "Name": "Python Script",
+        "Id": "ab6e567fc2cc4083b9889f76f60d04c6",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 67.514982008503949,
-        "Y": 230.47328461253073
+        "X": 588.68517427346615,
+        "Y": 395.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "636e9b77203743229720508d37fe5b42",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 373.6175023103288,
+        "Y": 394.77524224455806
       },
       {
         "ShowGeometry": true,
         "Name": "Output",
-        "Id": "b5c2d56c00ac4b12a865676663fc1018",
+        "Id": "fd2144cff4304d0c919daf243cbce53e",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 473.612887983597,
-        "Y": 231.3979713096966
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Python Script",
-        "Id": "d40041f8a71f467dae31b7b3aad25fa2",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 303.46587537092012,
-        "Y": 231.13056379821933
+        "X": 752.12071287170033,
+        "Y": 396.32313135340468
       }
     ],
     "Annotations": [],
-    "X": -27.681387871190054,
-    "Y": -146.76915177020925,
-    "Zoom": 2.080710428125
+    "X": -703.665283741875,
+    "Y": -359.72450159515608,
+    "Zoom": 1.7835993623828124
   }
 }
