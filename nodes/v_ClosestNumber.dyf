@@ -11,50 +11,10 @@
   "Outputs": [],
   "Nodes": [
     {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "nums = sorted(IN[0])\r\nn = IN[1]\r\n\r\nfor i in range(len(nums)):\r\n\tif (nums[i] == n) or (nums[i] < n and i == len(nums)-1) or (nums[i] > n and i == 0):\r\n\t\tOUT = [nums[i]] * 3 # closest = closest_upper = closest_lower = nums[i]\r\n\telif nums[i] < n and nums[i+1] > n:\r\n\t\tif n - nums[i] < nums[i+1] - n: closest = nums[i]\r\n\t\telse: closest = nums[i+1]\r\n\t\tclosest_upper = nums[i+1]\r\n\t\tclosest_lower = nums[i]\r\n\t\tOUT = closest, closest_upper, closest_lower",
-      "VariableInputPorts": true,
-      "Id": "3e2a10836b3d4ec684340277a2df9cc0",
-      "Inputs": [
-        {
-          "Id": "eeeac5bcd38047dcb5ba02e9856f3a31",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "fb350a5f237845db84195ef090182800",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "58984b5dcdda4465b014c28f58e3454e",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded IronPython script."
-    },
-    {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
       "NodeType": "InputNode",
       "Parameter": {
-        "Name": "numbers",
+        "Name": "list_of_numbers",
         "TypeName": "var",
         "TypeRank": 1,
         "DefaultValue": null,
@@ -212,23 +172,58 @@
       ],
       "Replication": "Disabled",
       "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "n = IN[0]\r\nnums = sorted(IN[1])\r\n\r\nfor i, num in enumerate(nums):\r\n\tif (num == n) or (num < n and i == len(nums)-1) or (num > n and i == 0):\r\n\t\tOUT = [num] * 3 # closest = closest_upper = closest_lower = nums[i]\r\n\telif num < n and nums[i+1] > n:\r\n\t\tif n - num < nums[i+1] - n: closest = num\r\n\t\telse: closest = nums[i+1]\r\n\t\tclosest_upper = nums[i+1]\r\n\t\tclosest_lower = num\r\n\t\tOUT = closest, closest_upper, closest_lower",
+      "VariableInputPorts": true,
+      "Id": "5513c311949140ce9102b803d0155db7",
+      "Inputs": [
+        {
+          "Id": "719583d076f24214838a230e60c805fe",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d746b158ebae47728ffa6a5fd819ac8f",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3dc03a601b2e4abfba0516771c23808f",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
     }
   ],
   "Connectors": [
     {
-      "Start": "58984b5dcdda4465b014c28f58e3454e",
-      "End": "dd7b29ed7501447fb1825545f718ca36",
-      "Id": "1caf385b297c4492b387047a0bf9c826"
-    },
-    {
       "Start": "df815e877e9740df995d7a0c981bef8c",
-      "End": "eeeac5bcd38047dcb5ba02e9856f3a31",
-      "Id": "e6a62fcd224d474fabd4c82e66872fe8"
+      "End": "d746b158ebae47728ffa6a5fd819ac8f",
+      "Id": "3731142c64f0457f8b98e228b0712491"
     },
     {
       "Start": "30c0efedc86b4ce4a4e60560ab70081b",
-      "End": "fb350a5f237845db84195ef090182800",
-      "Id": "595a0c31d7a744c9bf1c3917957f99d6"
+      "End": "719583d076f24214838a230e60c805fe",
+      "Id": "7e04ceebce1943d897a80ea5658cb540"
     },
     {
       "Start": "06f479e39b284367918f30c6e847c92a",
@@ -244,6 +239,11 @@
       "Start": "eed43daf4c1a4ebaa5842b8a0d37d056",
       "End": "34f93c0cff3344f0a90ef89186cede6e",
       "Id": "82e1af43e6b44ef9978d42c5bb395475"
+    },
+    {
+      "Start": "3dc03a601b2e4abfba0516771c23808f",
+      "End": "dd7b29ed7501447fb1825545f718ca36",
+      "Id": "189a53ee9d10416195f286457c01b67f"
     }
   ],
   "Dependencies": [],
@@ -254,7 +254,7 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.3.0.5885",
+      "Version": "2.6.1.8786",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
@@ -273,23 +273,13 @@
     "NodeViews": [
       {
         "ShowGeometry": true,
-        "Name": "Python Script",
-        "Id": "3e2a10836b3d4ec684340277a2df9cc0",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 840.0,
-        "Y": 349.0
-      },
-      {
-        "ShowGeometry": true,
         "Name": "Input",
         "Id": "4b85cc7f5a334938ae97e99f10bffb74",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 638.5,
-        "Y": 334.0
+        "X": 569.272133434327,
+        "Y": 403.22786656567297
       },
       {
         "ShowGeometry": true,
@@ -308,8 +298,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 646.5,
-        "Y": 396.0
+        "X": 577.27213343432709,
+        "Y": 341.65288979891096
       },
       {
         "ShowGeometry": true,
@@ -340,11 +330,21 @@
         "Excluded": false,
         "X": 984.0,
         "Y": 352.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "5513c311949140ce9102b803d0155db7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 841.11604961214994,
+        "Y": 351.46914019994017
       }
     ],
     "Annotations": [],
-    "X": -150.0,
-    "Y": -4.0,
-    "Zoom": 1.0
+    "X": -683.07109110937472,
+    "Y": -238.61675453125002,
+    "Zoom": 1.545620359375
   }
 }

@@ -86,7 +86,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "\r\nnumber = IN[0]\r\ndigits = IN[1]\r\ntrailing = IN[2]\r\n\r\nval = round(number, digits)\r\nif val == int(val):\r\n\tif trailing and digits>0: OUT = str(val) + \"0\"*(digits-1)\r\n\telse: OUT = str(val).rstrip(\"0\").rstrip(\".\")\r\nelse:\r\n\tif trailing: OUT = str(val).split(\".\")[0] +\".\"+ str(val).split(\".\")[1] + \"0\"*(digits - len(str(val).split(\".\")[1]))\r\n\telse: OUT = str(val)",
+      "Code": "number = IN[0]\r\ndigits = IN[1]\r\ntrailing = IN[2]\r\n\r\nval = round(number, digits)\r\nif val == int(val):\r\n\tif trailing and digits>0: OUT = str(val) + \"0\"*(digits-1)\r\n\telse: OUT = str(val).rstrip(\"0\").rstrip(\".\")\r\nelse:\r\n\tif trailing: OUT = str(val).split(\".\")[0] +\".\"+ str(val).split(\".\")[1] + \"0\"*(digits - len(str(val).split(\".\")[1]))\r\n\telse: OUT = str(val)",
       "VariableInputPorts": true,
       "Id": "31803a588604476e9a863eb4a83509e1",
       "Inputs": [
@@ -189,18 +189,18 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.3.0.5885",
+      "Version": "2.6.1.8786",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -771593.05429973069,
-      "EyeY": 835898.058824709,
-      "EyeZ": 3729334.2624486974,
-      "LookX": 771588.05429973069,
-      "LookY": -835887.058824709,
-      "LookZ": -3729342.2624486974,
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
       "UpX": 0.0,
       "UpY": 1.0,
       "UpZ": 0.0

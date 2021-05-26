@@ -13,7 +13,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "author = \"Vladyslav M\"\r\nurl = \"https://github.com/vlmarch/dynamo-v-nodes\"\r\n\r\nimport clr\r\nimport urllib\r\n\r\nclr.AddReference('System.Windows.Forms')\r\nclr.AddReference('System.Drawing')\r\nfrom System.Windows import *\r\nfrom System.Drawing import Point, Size\r\nfrom System.Windows.Forms import Application, Form, RichTextBox\r\n\r\nclass TextBoxForm(Form):\r\n\tdef __init__(self, msg):\r\n\t\tself.Name = \"Python boilerplate\"\r\n\t\tself.Text = \"Python boilerplate\"\r\n\t\tself.Size = Size(500, 700)\r\n        \r\n\t\tself.textbox = RichTextBox()\r\n\t\tself.textbox.Text=str(msg)\r\n\t\tself.textbox.Location = Point(0,0)\r\n\t\tself.textbox.Size = self.Size\r\n\t\t\r\n\t\tself.Controls.Add(self.textbox)         \r\n\r\nif IN[0] == True:\r\n\turl = \"https://raw.githubusercontent.com/vlmarch/revit-python-boilerplate/main/PythonTemplate.py\"\r\n\tf = urllib.urlopen(url)\r\n\tboilerplate = f.read()\r\n\tif IN[1] == True:\r\n\t\tform = TextBoxForm(boilerplate)\r\n\t\tApplication.Run(form)\r\n\t\r\n\tOUT = boilerplate\r\nelse:\r\n\tOUT = \"Pause\"",
+      "Code": "import clr\r\n\r\nimport urllib\r\n\r\nclr.AddReference('System.Windows.Forms')\r\nclr.AddReference('System.Drawing')\r\nfrom System.Windows import *\r\nfrom System.Drawing import Point, Size\r\nfrom System.Windows.Forms import Application, Form, RichTextBox\r\n\r\nclass TextBoxForm(Form):\r\n\tdef __init__(self, msg):\r\n\t\tself.Name = \"Python boilerplate\"\r\n\t\tself.Text = \"Python boilerplate\"\r\n\t\tself.Size = Size(500, 700)\r\n        \r\n\t\tself.textbox = RichTextBox()\r\n\t\tself.textbox.Text=str(msg)\r\n\t\tself.textbox.Location = Point(0,0)\r\n\t\tself.textbox.Size = self.Size\r\n\t\t\r\n\t\tself.Controls.Add(self.textbox)         \r\n\r\nif IN[0] == True:\r\n\turl = \"https://raw.githubusercontent.com/vlmarch/revit-python-boilerplate/main/PythonTemplate.py\"\r\n\tf = urllib.urlopen(url)\r\n\tboilerplate = f.read()\r\n\tif IN[1] == True:\r\n\t\tform = TextBoxForm(boilerplate)\r\n\t\tApplication.Run(form)\r\n\t\r\n\tOUT = boilerplate\r\nelse:\r\n\tOUT = \"Pause\"",
       "VariableInputPorts": true,
       "Id": "b2575b953a604fe4a156354606bdf0bf",
       "Inputs": [
@@ -149,59 +149,59 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.3.0.5885",
+      "Version": "2.6.1.8786",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -17.0,
-      "EyeY": 24.0,
-      "EyeZ": 50.0,
-      "LookX": 12.0,
-      "LookY": -13.0,
-      "LookZ": -58.0,
+      "EyeX": -13207.918159462923,
+      "EyeY": 14314.161339418157,
+      "EyeZ": 63806.104437404058,
+      "LookX": 13202.918159462923,
+      "LookY": -14303.161339418157,
+      "LookZ": -63814.104437404058,
       "UpX": 0.0,
       "UpY": 1.0,
       "UpZ": 0.0
     },
     "NodeViews": [
       {
+        "ShowGeometry": true,
+        "Name": "Python Script",
         "Id": "b2575b953a604fe4a156354606bdf0bf",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Python Script",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 620.255608407049,
         "Y": 471.705069613191
       },
       {
+        "ShowGeometry": true,
+        "Name": "Input",
         "Id": "50ecafcc45374d4198fbf7414f596d7a",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Input",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 362.46574245863258,
         "Y": 458.25859814127887
       },
       {
+        "ShowGeometry": true,
+        "Name": "Output",
         "Id": "43e5adaa748c4deb805ead86e06d11af",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Output",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 775.02062203669448,
         "Y": 472.3479377963306
       },
       {
+        "ShowGeometry": true,
+        "Name": "Input",
         "Id": "bca32144ce964dff80172a60f3862e63",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Input",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 340.19429773934087,
         "Y": 522.69501915412684

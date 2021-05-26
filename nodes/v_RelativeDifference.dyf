@@ -13,7 +13,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "author = \"Vladyslav M\"\r\nurl = \"https://github.com/vlmarch\"\r\n\r\nif isinstance(IN[0],list):\r\n\tnum = UnwrapElement(IN[0])\r\nelse:\r\n\tnum = [UnwrapElement(IN[0])]\r\n\r\n\r\nOUT = [0] + [num[i] - num[i-1] for i in range(1,len(num))]",
+      "Code": "if isinstance(IN[0],list): num = UnwrapElement(IN[0])\r\nelse: num = [UnwrapElement(IN[0])]\r\n\r\n\r\nOUT = [0] + [num[i] - num[i-1] for i in range(1,len(num))]",
       "VariableInputPorts": true,
       "Id": "b634379db4974c87935f25418b454ced",
       "Inputs": [
@@ -109,7 +109,7 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.3.0.5885",
+      "Version": "2.6.1.8786",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },

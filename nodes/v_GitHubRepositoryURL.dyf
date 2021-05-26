@@ -13,7 +13,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "author = \"Vladyslav M\"\r\nurl = \"https://github.com/vlmarch/dynamo-v-nodes\"\r\n\r\nimport clr\r\nimport sys\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib')\r\n\r\nimport webbrowser\r\n\r\nif IN[0]: webbrowser.open(url)\r\n\r\nOUT = url",
+      "Code": "import clr\r\nimport sys\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib')\r\n\r\nimport webbrowser\r\n\r\nurl = \"https://github.com/vlmarch/dynamo-v-nodes\"\r\nif IN[0]: webbrowser.open(url)\r\nOUT = url",
       "VariableInputPorts": true,
       "Id": "838414b136a94a3babb7c71a3fa30725",
       "Inputs": [
@@ -109,49 +109,49 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.3.0.5885",
+      "Version": "2.6.1.8786",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -17.0,
-      "EyeY": 24.0,
-      "EyeZ": 50.0,
-      "LookX": 12.0,
-      "LookY": -13.0,
-      "LookZ": -58.0,
+      "EyeX": -13207.918159462923,
+      "EyeY": 14314.161339418157,
+      "EyeZ": 63806.104437404058,
+      "LookX": 13202.918159462923,
+      "LookY": -14303.161339418157,
+      "LookZ": -63814.104437404058,
       "UpX": 0.0,
       "UpY": 1.0,
       "UpZ": 0.0
     },
     "NodeViews": [
       {
+        "ShowGeometry": true,
+        "Name": "Python Script",
         "Id": "838414b136a94a3babb7c71a3fa30725",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Python Script",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 612.30163745008872,
         "Y": 262.969639500483
       },
       {
+        "ShowGeometry": true,
+        "Name": "Input",
         "Id": "5c6b44bc23a24dc7bd78716d3d501036",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Input",
-        "ShowGeometry": true,
         "Excluded": false,
-        "X": 398.12917335128884,
-        "Y": 264.36423555405929
+        "X": 351.99108575276182,
+        "Y": 261.96121015830266
       },
       {
+        "ShowGeometry": true,
+        "Name": "Output",
         "Id": "155f8351dda1433c998b76b3f323da5b",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Output",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 759.84910857527609,
         "Y": 261.51939492084864
