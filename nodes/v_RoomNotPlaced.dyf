@@ -87,27 +87,6 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "not_placed",
-      "Id": "5842d7ca54be42e8a069d6083e64aa8f",
-      "Inputs": [
-        {
-          "Id": "4a64288453674e9bb58a02129d4adee9",
-          "Name": "",
-          "Description": "",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [],
-      "Replication": "Disabled",
-      "Description": "A function output, use with custom nodes"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
-      "NodeType": "OutputNode",
-      "ElementResolver": null,
       "Symbol": "placed",
       "Id": "2c7900b50c3546fd8f8dada48865b3f6",
       "Inputs": [
@@ -215,11 +194,32 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "bool",
-      "Id": "0eb6ef5beee04770ba1081aa4fa6e3ed",
+      "Symbol": "not_placed",
+      "Id": "bc03cf6edcdf4753bcff558a6a69fbad",
       "Inputs": [
         {
-          "Id": "b0755ba556bb42a98b0c877fd9d3426c",
+          "Id": "8ec2f380c61e45148a9679ec89cf3685",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "bool",
+      "Id": "39b6ece3915c49be8cb855ea3b7810dd",
+      "Inputs": [
+        {
+          "Id": "f1b8f6e5c20d4ca69bade8e4eb719011",
           "Name": "",
           "Description": "",
           "UsingDefaultValue": false,
@@ -241,8 +241,8 @@
     },
     {
       "Start": "a571f91cbbea4c8b89abaf2ad057d2cb",
-      "End": "4a64288453674e9bb58a02129d4adee9",
-      "Id": "3f6a267cc84f45dbb271aa1918059224"
+      "End": "8ec2f380c61e45148a9679ec89cf3685",
+      "Id": "abc7c543a2254be3874084f77285bcd4"
     },
     {
       "Start": "a4691804fe5442f3be595785661dcc3a",
@@ -251,8 +251,8 @@
     },
     {
       "Start": "a4691804fe5442f3be595785661dcc3a",
-      "End": "b0755ba556bb42a98b0c877fd9d3426c",
-      "Id": "7374ba045a8645e5a0043eef2123a541"
+      "End": "f1b8f6e5c20d4ca69bade8e4eb719011",
+      "Id": "82af340afd104e88bd129f0e3b537559"
     },
     {
       "Start": "935b6255311b40a7beb579e73b18cc65",
@@ -278,7 +278,7 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.3.0.5885",
+      "Version": "2.3.1.11775",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
@@ -296,79 +296,79 @@
     },
     "NodeViews": [
       {
+        "ShowGeometry": true,
+        "Name": "List.FilterByBoolMask",
         "Id": "1b37f7ff55404bb79e96a8bf96ac4d94",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "List.FilterByBoolMask",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 824.71941824284,
         "Y": 243.172604287088
       },
       {
-        "Id": "5842d7ca54be42e8a069d6083e64aa8f",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Name": "Output",
         "ShowGeometry": true,
-        "Excluded": false,
-        "X": 1061.1990654535512,
-        "Y": 296.35904586249103
-      },
-      {
+        "Name": "Output",
         "Id": "2c7900b50c3546fd8f8dada48865b3f6",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Output",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 1065.272743718948,
         "Y": 234.0
       },
       {
+        "ShowGeometry": true,
+        "Name": "Code Block",
         "Id": "c4e06c0b7e9941b896a0619f268ace04",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Code Block",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 674.80932014813993,
         "Y": 320.524414120163
       },
       {
+        "ShowGeometry": true,
+        "Name": "Room.Area",
         "Id": "ef719c5a0023485fb3fe83f8b75f059c",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Room.Area",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 466.5,
         "Y": 319.070670283205
       },
       {
+        "ShowGeometry": true,
+        "Name": "Input",
         "Id": "fdae02bfcb87472da965b7b6b4f2485f",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Input",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 262.69840668471539,
         "Y": 245.78175584886458
       },
       {
-        "Id": "0eb6ef5beee04770ba1081aa4fa6e3ed",
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "bc03cf6edcdf4753bcff558a6a69fbad",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Output",
-        "ShowGeometry": true,
         "Excluded": false,
-        "X": 1064.0663313994087,
-        "Y": 359.90979140117867
+        "X": 1058.60558602357,
+        "Y": 304.88801068379945
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "39b6ece3915c49be8cb855ea3b7810dd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1057.6506931840813,
+        "Y": 373.08560647243104
       }
     ],
     "Annotations": [],
-    "X": -36.764313728436832,
-    "Y": -28.4801006703251,
+    "X": -269.76431372843683,
+    "Y": 2.5198993296748995,
     "Zoom": 1.3076413563671876
   }
 }

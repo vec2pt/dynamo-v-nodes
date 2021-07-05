@@ -1,7 +1,7 @@
 {
   "Uuid": "86a16f0d-2881-4fd0-bf32-b718dfc83c37",
   "IsCustomNode": true,
-  "Category": "v-nodes.About",
+  "Category": "v-nodes.Help&About",
   "Description": "",
   "Name": "v_PythonBoilerplate",
   "ElementResolver": {

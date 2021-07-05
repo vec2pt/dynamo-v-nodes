@@ -1,0 +1,258 @@
+{
+  "Uuid": "ffa37d85-a7ed-4d74-93fe-b28cf8d0017a",
+  "IsCustomNode": true,
+  "Category": "v-nodes.Revit.Level",
+  "Description": "",
+  "Name": "v_LevelPlane",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Plane": {
+        "Key": "Autodesk.DesignScript.Geometry.Plane",
+        "Value": "ProtoGeometry.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Plane.Offset@double",
+      "Id": "d29bd075215f429aa4086f575a5dfb59",
+      "Inputs": [
+        {
+          "Id": "e774fda5e21d49328efb748892dec64b",
+          "Name": "plane",
+          "Description": "Autodesk.DesignScript.Geometry.Plane",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b2ee7f834a63487984f46590e860a3b2",
+          "Name": "dist",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4fe6292a35ae40dc85890f91316f91d2",
+          "Name": "Plane",
+          "Description": "Plane",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a new Plane offset by this Plane in the normal direction by the specified distance.\n\nPlane.Offset (dist: double = 1): Plane"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Level.Elevation",
+      "Id": "f8ad61ec963d4d7492831d7e43829d92",
+      "Inputs": [
+        {
+          "Id": "4e302adfa9b046cab29d903d0a0d332b",
+          "Name": "level",
+          "Description": "Revit.Elements.Level",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "dfccec1d7d09447bb398ba329ed8c53b",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The elevation of the level above ground level\n\nLevel.Elevation: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "Plane.XY();",
+      "Id": "d8c86219108a4049842a83a62c3109c0",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ba4a9d5f34b84551ba1c38b5fce783ee",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "level",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "c93e456f999d4cf9971364a3015c2717",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "6fd278bfe519410aba338af238fa1663",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "plane",
+      "Id": "dc1f5570c91a48778b9c4b87e6526419",
+      "Inputs": [
+        {
+          "Id": "f259e37775c7402a88cdeb3fa95c1518",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "4fe6292a35ae40dc85890f91316f91d2",
+      "End": "f259e37775c7402a88cdeb3fa95c1518",
+      "Id": "90dbba84790e46cda0bcef8ec024a649"
+    },
+    {
+      "Start": "dfccec1d7d09447bb398ba329ed8c53b",
+      "End": "b2ee7f834a63487984f46590e860a3b2",
+      "Id": "c3bee6f17a0b49ecbf2e19f5038dafb4"
+    },
+    {
+      "Start": "ba4a9d5f34b84551ba1c38b5fce783ee",
+      "End": "e774fda5e21d49328efb748892dec64b",
+      "Id": "ef8ef96d1f7d4706a6e9f9a98468c9e1"
+    },
+    {
+      "Start": "6fd278bfe519410aba338af238fa1663",
+      "End": "4e302adfa9b046cab29d903d0a0d332b",
+      "Id": "82bc1af2381d49bb9ccff2cf65a4edab"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.3.0.5885",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -5784.9206385010048,
+      "EyeY": 4360.2873555355018,
+      "EyeZ": -8882.8331225941674,
+      "LookX": -1781.6725204159748,
+      "LookY": -7413.3121874589851,
+      "LookZ": 4595.9550734170607,
+      "UpX": -0.25108536403799286,
+      "UpY": 0.7193398003386926,
+      "UpZ": 0.64769313074533708
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Plane.Offset",
+        "Id": "d29bd075215f429aa4086f575a5dfb59",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 901.86140010455028,
+        "Y": 411.18619821232005
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Level.Elevation",
+        "Id": "f8ad61ec963d4d7492831d7e43829d92",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 679.0,
+        "Y": 472.21251933781014
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "d8c86219108a4049842a83a62c3109c0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 747.45161520686,
+        "Y": 389.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "c93e456f999d4cf9971364a3015c2717",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 490.5,
+        "Y": 471.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "dc1f5570c91a48778b9c4b87e6526419",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1127.5,
+        "Y": 412.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}

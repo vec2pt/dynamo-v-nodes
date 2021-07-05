@@ -1,9 +1,9 @@
 {
-  "Uuid": "1baf2af7-d96d-4c29-9f78-3568f2ae11e2",
+  "Uuid": "b112fb16-edd2-4985-a625-331788584776",
   "IsCustomNode": true,
-  "Category": "v-nodes.Help&About",
-  "Description": "Display GitHub repository using the default browser.",
-  "Name": "v_GitHubRepositoryURL",
+  "Category": "v-nodes.Revit.Document",
+  "Description": "",
+  "Name": "v_KeynoteFilePath",
   "ElementResolver": {
     "ResolutionMap": {}
   },
@@ -13,12 +13,12 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import clr\r\nimport sys\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib')\r\n\r\nimport webbrowser\r\n\r\nurl = \"https://github.com/vlmarch/dynamo-v-nodes\"\r\nif IN[0]: webbrowser.open(url)\r\nOUT = url",
+      "Code": "import clr\r\nclr.AddReference(\"RevitAPI\")\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference(\"RevitServices\")\r\nfrom RevitServices.Persistence import DocumentManager\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\n\r\nrefresh = IN[0]\r\n\r\nkeynote_reference = KeynoteTable.GetKeynoteTable(doc).GetExternalFileReference()\r\npath = ModelPathUtils.ConvertModelPathToUserVisiblePath(keynote_reference.GetPath())\r\nOUT = path",
       "VariableInputPorts": true,
-      "Id": "838414b136a94a3babb7c71a3fa30725",
+      "Id": "6f53786639684c85af0b4ad6c0cb015d",
       "Inputs": [
         {
-          "Id": "943382a00e744e4d8b9a5d91011bf704",
+          "Id": "a91b549f56604e548010a46f26d926d5",
           "Name": "IN[0]",
           "Description": "Input #0",
           "UsingDefaultValue": false,
@@ -29,7 +29,7 @@
       ],
       "Outputs": [
         {
-          "Id": "aa9fd6d78215406f9658e46db30650cf",
+          "Id": "9972202068594eb591f43560807aff66",
           "Name": "OUT",
           "Description": "Result of the python script",
           "UsingDefaultValue": false,
@@ -45,17 +45,17 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
       "NodeType": "InputNode",
       "Parameter": {
-        "Name": "open_url",
+        "Name": "refresh",
         "TypeName": "bool",
         "TypeRank": 0,
-        "DefaultValue": "false",
+        "DefaultValue": "true",
         "Description": ""
       },
-      "Id": "5c6b44bc23a24dc7bd78716d3d501036",
+      "Id": "852717216855472c89c13fe4b64862d0",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "8bc86908a81444729cc39c2992d2359b",
+          "Id": "44cebab39a3f413aafc8a1b7b9f3f5f7",
           "Name": "",
           "Description": "Symbol",
           "UsingDefaultValue": false,
@@ -71,11 +71,11 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "url",
-      "Id": "155f8351dda1433c998b76b3f323da5b",
+      "Symbol": "path;",
+      "Id": "1c7907e1d8d54d079a7b977629bee34b",
       "Inputs": [
         {
-          "Id": "177cab44896d4edd8fc63b2606aaa874",
+          "Id": "cabfc747140c499ca7ecc19c9aee6c9f",
           "Name": "",
           "Description": "",
           "UsingDefaultValue": false,
@@ -91,14 +91,14 @@
   ],
   "Connectors": [
     {
-      "Start": "aa9fd6d78215406f9658e46db30650cf",
-      "End": "177cab44896d4edd8fc63b2606aaa874",
-      "Id": "7201cc5aea8944339c91c3b2042c7131"
+      "Start": "9972202068594eb591f43560807aff66",
+      "End": "cabfc747140c499ca7ecc19c9aee6c9f",
+      "Id": "d280e342c3ef4768a567b3e2218ca535"
     },
     {
-      "Start": "8bc86908a81444729cc39c2992d2359b",
-      "End": "943382a00e744e4d8b9a5d91011bf704",
-      "Id": "23153fec0b924d45a0d24fcda6a49aa7"
+      "Start": "44cebab39a3f413aafc8a1b7b9f3f5f7",
+      "End": "a91b549f56604e548010a46f26d926d5",
+      "Id": "f389a0234ff54eddb8f5a69754540789"
     }
   ],
   "Dependencies": [],
@@ -109,18 +109,18 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.6.1.8786",
+      "Version": "2.3.1.11775",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -13207.918159462923,
-      "EyeY": 14314.161339418157,
-      "EyeZ": 63806.104437404058,
-      "LookX": 13202.918159462923,
-      "LookY": -14303.161339418157,
-      "LookZ": -63814.104437404058,
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
       "UpX": 0.0,
       "UpY": 1.0,
       "UpZ": 0.0
@@ -129,37 +129,37 @@
       {
         "ShowGeometry": true,
         "Name": "Python Script",
-        "Id": "838414b136a94a3babb7c71a3fa30725",
+        "Id": "6f53786639684c85af0b4ad6c0cb015d",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 612.30163745008872,
-        "Y": 262.969639500483
+        "X": 629.08308605341267,
+        "Y": 484.51335311572677
       },
       {
         "ShowGeometry": true,
         "Name": "Input",
-        "Id": "5c6b44bc23a24dc7bd78716d3d501036",
+        "Id": "852717216855472c89c13fe4b64862d0",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 351.99108575276182,
-        "Y": 261.96121015830266
+        "X": 390.89951448729107,
+        "Y": 485.41235912038474
       },
       {
         "ShowGeometry": true,
         "Name": "Output",
-        "Id": "155f8351dda1433c998b76b3f323da5b",
+        "Id": "1c7907e1d8d54d079a7b977629bee34b",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 759.84910857527609,
-        "Y": 261.51939492084864
+        "X": 792.51296147035009,
+        "Y": 483.50158688736474
       }
     ],
     "Annotations": [],
-    "X": -595.80608730622862,
-    "Y": -252.44677087478169,
-    "Zoom": 2.080710428125
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
   }
 }

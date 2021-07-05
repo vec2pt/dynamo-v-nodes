@@ -62,27 +62,6 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "not_placed",
-      "Id": "e53c0b09a946447292b8e577bb5aee4f",
-      "Inputs": [
-        {
-          "Id": "cb89ec57497146c0bb7061d9384cb243",
-          "Name": "",
-          "Description": "",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [],
-      "Replication": "Disabled",
-      "Description": "A function output, use with custom nodes"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
-      "NodeType": "OutputNode",
-      "ElementResolver": null,
       "Symbol": "placed",
       "Id": "398bb045de8b4c08b91fd3787a22f6e2",
       "Inputs": [
@@ -219,11 +198,32 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "bool",
-      "Id": "e9478961d7f74a5eb2d31160ba544b49",
+      "Symbol": "not_placed",
+      "Id": "cfba3aaec8164dc0afafbe225cbbd1fd",
       "Inputs": [
         {
-          "Id": "48368fb430a748ed836b6d194d152d01",
+          "Id": "7012eb1012324469892587f44a0bea0c",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "bool",
+      "Id": "9da37a4120d04c43a7d2f6cc790c9253",
+      "Inputs": [
+        {
+          "Id": "bb390632c93a45ee9735035670dd816e",
           "Name": "",
           "Description": "",
           "UsingDefaultValue": false,
@@ -245,8 +245,8 @@
     },
     {
       "Start": "0c547f601650492287b35f08a9006459",
-      "End": "cb89ec57497146c0bb7061d9384cb243",
-      "Id": "84cae1de6c1a4e098b97d4a32fc27cb2"
+      "End": "7012eb1012324469892587f44a0bea0c",
+      "Id": "0376af09452641bf8147597007bd8948"
     },
     {
       "Start": "930841880ac445e8be6a7bc09965ac4b",
@@ -255,8 +255,8 @@
     },
     {
       "Start": "930841880ac445e8be6a7bc09965ac4b",
-      "End": "48368fb430a748ed836b6d194d152d01",
-      "Id": "84ddec3229814457b3f5a9a84960db4c"
+      "End": "bb390632c93a45ee9735035670dd816e",
+      "Id": "b66f3bd0864549ae8b9ba52095106e53"
     },
     {
       "Start": "2a9367c6b24749d081922ffbdef78581",
@@ -287,7 +287,7 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.3.0.5885",
+      "Version": "2.3.1.11775",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
@@ -305,84 +305,84 @@
     },
     "NodeViews": [
       {
+        "ShowGeometry": true,
+        "Name": "List.FilterByBoolMask",
         "Id": "87c32234ee9a464da5e15173d224473c",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "List.FilterByBoolMask",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 890.64255665704286,
         "Y": 413.172604287088
       },
       {
-        "Id": "e53c0b09a946447292b8e577bb5aee4f",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Name": "Output",
         "ShowGeometry": true,
-        "Excluded": false,
-        "X": 1127.1222038677529,
-        "Y": 466.35904586249103
-      },
-      {
+        "Name": "Output",
         "Id": "398bb045de8b4c08b91fd3787a22f6e2",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Output",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 1131.1958821331532,
         "Y": 404.0
       },
       {
+        "ShowGeometry": true,
+        "Name": "Code Block",
         "Id": "612a9acc8cc44608a2696e57328c3412",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Code Block",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 740.732458562343,
         "Y": 490.524414120163
       },
       {
+        "ShowGeometry": true,
+        "Name": "Input",
         "Id": "5e71ebccf90a4cbea99108f1aea74f5d",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Input",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 294.5,
         "Y": 414.562220665785
       },
       {
+        "ShowGeometry": true,
+        "Name": "Element.GetParameterValueByName",
         "Id": "f079f796504a4635b9df03b29d5de642",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Element.GetParameterValueByName",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 465.5,
         "Y": 488.0
       },
       {
+        "ShowGeometry": true,
+        "Name": "Code Block",
         "Id": "adacabed6794447fa08f1ee4d3672423",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Code Block",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 340.0,
         "Y": 518.0
       },
       {
-        "Id": "e9478961d7f74a5eb2d31160ba544b49",
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "cfba3aaec8164dc0afafbe225cbbd1fd",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Output",
-        "ShowGeometry": true,
         "Excluded": false,
-        "X": 1127.7833542151211,
-        "Y": 526.472389106152
+        "X": 1129.0773330294328,
+        "Y": 467.59635305497216
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "9da37a4120d04c43a7d2f6cc790c9253",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1128.9108583989944,
+        "Y": 528.6518445984517
       }
     ],
     "Annotations": [],
