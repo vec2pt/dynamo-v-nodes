@@ -3,7 +3,7 @@
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Room",
   "Description": "",
-  "Name": "v_RoomBoundaries",
+  "Name": "v_RoomBoundaries_test",
   "ElementResolver": {
     "ResolutionMap": {
       "Rooms": {

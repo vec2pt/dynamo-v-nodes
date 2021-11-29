@@ -168,9 +168,9 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
       "NodeType": "InputNode",
       "Parameter": {
-        "Name": "room",
-        "TypeName": "var",
-        "TypeRank": 1,
+        "Name": "rooms",
+        "TypeName": "Revit.Elements.Room",
+        "TypeRank": -1,
         "DefaultValue": null,
         "Description": ""
       },
@@ -284,15 +284,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -17.0,
-      "EyeY": 24.0,
-      "EyeZ": 50.0,
-      "LookX": 12.0,
-      "LookY": -13.0,
-      "LookZ": -58.0,
-      "UpX": 0.0,
-      "UpY": 1.0,
-      "UpZ": 0.0
+      "EyeX": 6036.9061777595707,
+      "EyeY": 2191.8615140711572,
+      "EyeZ": -2512.4341334782985,
+      "LookX": -1241.8157400873242,
+      "LookY": -5022.0783128870044,
+      "LookZ": 3377.0897914872148,
+      "UpX": -0.23093307310759903,
+      "UpY": 0.74314482547743854,
+      "UpZ": 0.6280172641825138
     },
     "NodeViews": [
       {
@@ -342,8 +342,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 262.69840668471539,
-        "Y": 245.78175584886458
+        "X": 153.34120464785553,
+        "Y": 246.546491527444
       },
       {
         "ShowGeometry": true,
@@ -367,8 +367,8 @@
       }
     ],
     "Annotations": [],
-    "X": -269.76431372843683,
-    "Y": 2.5198993296748995,
+    "X": 2.2356862715631678,
+    "Y": -4.4801006703251005,
     "Zoom": 1.3076413563671876
   }
 }

@@ -1,0 +1,174 @@
+{
+  "Uuid": "a0c19e15-2bd9-454b-a875-ac951e601559",
+  "IsCustomNode": true,
+  "Category": "v-nodes.Revit.Room",
+  "Description": "",
+  "Name": "v_RoomLevel",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Rooms": {
+        "Key": "Rhythm.Revit.Elements.Rooms",
+        "Value": "RhythmRevit.dll"
+      },
+      "Autodesk.DesignScript.Geometry.Polygon": {
+        "Key": "Autodesk.DesignScript.Geometry.Polygon",
+        "Value": "ProtoGeometry.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "OUT = [e.Level for e in UnwrapElement(IN[0])]",
+      "VariableInputPorts": true,
+      "Id": "1ac15d44b2194e95a6525a8de706c63e",
+      "Inputs": [
+        {
+          "Id": "27a52b8b023e449aba0fe75565f029ce",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9b82fbfbaa604c06921f097f98f630f1",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "rooms",
+        "TypeName": "Revit.Elements.Room",
+        "TypeRank": 1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "7ede07e374fb4ee5895df3c49ee02bbb",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "54229e2862a04254934fc3485baead63",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "levels",
+      "Id": "e3dadc2214ce445daba98b9d350c0d7a",
+      "Inputs": [
+        {
+          "Id": "c908d2cd4dac465c948b8ee7831834a4",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "9b82fbfbaa604c06921f097f98f630f1",
+      "End": "c908d2cd4dac465c948b8ee7831834a4",
+      "Id": "98d1ee2dbb814e60a4598bcdd3b946ac"
+    },
+    {
+      "Start": "54229e2862a04254934fc3485baead63",
+      "End": "27a52b8b023e449aba0fe75565f029ce",
+      "Id": "35b11587820d4d82838157fb52325bf1"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.3.1.11775",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 6036.9061777595707,
+      "EyeY": 2191.8615140711572,
+      "EyeZ": -2512.4341334782985,
+      "LookX": -1241.8157400873242,
+      "LookY": -5022.0783128870044,
+      "LookZ": 3377.0897914872148,
+      "UpX": -0.23093307310759903,
+      "UpY": 0.74314482547743854,
+      "UpZ": 0.6280172641825138
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "1ac15d44b2194e95a6525a8de706c63e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 632.0,
+        "Y": 460.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "7ede07e374fb4ee5895df3c49ee02bbb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 333.5,
+        "Y": 460.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "e3dadc2214ce445daba98b9d350c0d7a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 781.5,
+        "Y": 461.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "Uuid": "027cf6a5-c02f-47ac-8a40-8785d66ccf89",
+  "IsCustomNode": true,
+  "Category": "v-nodes.Geometry",
+  "Description": "Offset a Polygon by a specified amount. Polygon must be planar.",
+  "Name": "v_PolygonOffset",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Polygon": {
+        "Key": "Autodesk.DesignScript.Geometry.Polygon",
+        "Value": "ProtoGeometry.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\n\r\npoligon = IN[0]\r\ndistance = IN[1]\r\npol_pts = [p for p in poligon.Points]\r\n\r\nif poligon.IsPlanar:\r\n\tnew_pts = []\r\n\tfor i in range(len(pol_pts)):\r\n\t\tv1 = Vector.ByTwoPoints(pol_pts[i-1], pol_pts[i]).Normalized().Rotate(poligon.Normal ,-90)\r\n\t\tv2 = Vector.ByTwoPoints(pol_pts[i-2], pol_pts[i-1]).Normalized().Rotate(poligon.Normal ,-90)\r\n\t\tvec = Vector.Add(v1,v2).Normalized().Scale(distance / Math.Cos(Vector.AngleWithVector(v1,v2)/2))\r\n\t\tnew_pts.append(Geometry.Translate(pol_pts[i-1], vec))\r\n\tnew_pts.append(new_pts.pop(0))\r\n\tOUT = Polygon.ByPoints(new_pts)\r\nelse: \r\n\tOUT = None",
+      "VariableInputPorts": true,
+      "Id": "4c041a46ee084d2290a579637a596135",
+      "Inputs": [
+        {
+          "Id": "db282342f96d4d1cb12ce9dc9e7e8965",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a505d11460944845bcd3b0e6131557b8",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "237e7f13c21f4bca9230c7b997e817d0",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "polygon",
+        "TypeName": "Autodesk.DesignScript.Geometry.Polygon",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "4c8f1d3317014ac784dcfdfe176e33d7",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "567a527d39e84cc5bae703fe43753ddf",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "distance",
+        "TypeName": "double",
+        "TypeRank": 0,
+        "DefaultValue": "1",
+        "Description": "A positive or negative distance to offset"
+      },
+      "Id": "30c04cdb4e8d4aaba87071f54c861a54",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "809cf1f2cba74bf5ac9e70f9bb008ae1",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "polygon",
+      "Id": "8e020fac2dbc44329979e91c8956ad80",
+      "Inputs": [
+        {
+          "Id": "fc835bbf1d7644dda9958e4cfc0953ef",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "237e7f13c21f4bca9230c7b997e817d0",
+      "End": "fc835bbf1d7644dda9958e4cfc0953ef",
+      "Id": "632a8a7051b54a01b87d6c329920e991"
+    },
+    {
+      "Start": "567a527d39e84cc5bae703fe43753ddf",
+      "End": "db282342f96d4d1cb12ce9dc9e7e8965",
+      "Id": "0aa76031a5e34a2c8b304dc1b93fad86"
+    },
+    {
+      "Start": "809cf1f2cba74bf5ac9e70f9bb008ae1",
+      "End": "a505d11460944845bcd3b0e6131557b8",
+      "Id": "39038ac5b52c493da3ed6adab647e1e3"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.3.1.11775",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "4c041a46ee084d2290a579637a596135",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 652.0,
+        "Y": 407.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "4c8f1d3317014ac784dcfdfe176e33d7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 163.43782927398752,
+        "Y": 383.25035792088835
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "30c04cdb4e8d4aaba87071f54c861a54",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 178.03397586154915,
+        "Y": 444.3915856519896
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "8e020fac2dbc44329979e91c8956ad80",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 834.5,
+        "Y": 408.76121721418207
+      }
+    ],
+    "Annotations": [],
+    "X": -161.12409493753279,
+    "Y": -140.98416216435217,
+    "Zoom": 0.86797750764901571
+  }
+}

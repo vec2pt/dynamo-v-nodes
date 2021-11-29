@@ -13,7 +13,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import os\r\nimport uuid\r\n\r\ndesktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')\r\nfile_path = desktop + \"\\\\\" + str(uuid.uuid4()) + \".txt\"\r\n\r\ndata = IN[0]\r\nnotepad = IN[1]\r\nrun_it = IN[2]\r\n\r\nif run_it:\r\n\twith open(file_path, \"w\") as f:\r\n\t\tf.write(data.encode(\"utf-8\")) \r\n\t\r\n\tif notepad:\r\n\t\tos.system('Notepad \"{}\" && cls'.format(file_path))\r\n\telse:\r\n\t\tos.system('code \"{}\" && cls'.format(file_path))\r\n\t\timport time\r\n\t\ttime.sleep(2)\r\n\tos.remove(file_path)\r\nOUT = None\r\n\r\n\r\n",
+      "Code": "import os\r\nimport uuid\r\n\r\ndesktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')\r\nfile_path = desktop + \"\\\\\" + str(uuid.uuid4()) + \".txt\"\r\n\r\ndata = IN[0]\r\nrun_it = IN[1]\r\n\r\nif run_it:\r\n\twith open(file_path, \"w\") as f:\r\n\t\tf.write(data.encode(\"utf-8\")) \r\n\tos.system('Notepad \"{}\" && cls'.format(file_path))\r\n\tos.remove(file_path)\r\nOUT = None\r\n\r\n\r\n",
       "VariableInputPorts": true,
       "Id": "d3cc3b17ac1a454d81e53a1e566eee37",
       "Inputs": [
@@ -30,15 +30,6 @@
           "Id": "c22905bcaa294925980f2e02e955d98c",
           "Name": "IN[1]",
           "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "3500189f0b7949e496086bbc64ef972e",
-          "Name": "IN[2]",
-          "Description": "Input #2",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -268,32 +259,6 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
       "NodeType": "InputNode",
       "Parameter": {
-        "Name": "notepad",
-        "TypeName": "bool",
-        "TypeRank": 0,
-        "DefaultValue": "true",
-        "Description": " true - notepad\nfalse - vs code"
-      },
-      "Id": "5bdd0384ed1a4ae89b9efca4f1b0f103",
-      "Inputs": [],
-      "Outputs": [
-        {
-          "Id": "af743cc91e454982ae32cd235ea98972",
-          "Name": "",
-          "Description": "Symbol",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
-      "NodeType": "InputNode",
-      "Parameter": {
         "Name": "run_it",
         "TypeName": "bool",
         "TypeRank": 0,
@@ -354,14 +319,9 @@
       "Id": "f8ed742c5804486aa19918c839256060"
     },
     {
-      "Start": "af743cc91e454982ae32cd235ea98972",
-      "End": "c22905bcaa294925980f2e02e955d98c",
-      "Id": "c147cf7d88f047baa8e682dbccc79abc"
-    },
-    {
       "Start": "bccd92e956314452943f0bff81bb67bb",
-      "End": "3500189f0b7949e496086bbc64ef972e",
-      "Id": "1007280260854ebeb0d10e2edfef6984"
+      "End": "c22905bcaa294925980f2e02e955d98c",
+      "Id": "bd667d0ebd7f4f70959b07ced6d079c0"
     }
   ],
   "Dependencies": [],
@@ -372,7 +332,7 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.3.0.5885",
+      "Version": "2.3.1.11775",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
@@ -472,27 +432,17 @@
       {
         "ShowGeometry": true,
         "Name": "Input",
-        "Id": "5bdd0384ed1a4ae89b9efca4f1b0f103",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 604.77441340939174,
-        "Y": 619.45236981614414
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Input",
         "Id": "3dd6d770b769420386ac2f0e0a543b90",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 606.25486579481287,
-        "Y": 704.74552584810954
+        "X": 619.055790237487,
+        "Y": 607.67184882449726
       }
     ],
     "Annotations": [],
-    "X": -396.87178857353115,
-    "Y": -251.64550204879646,
+    "X": -460.87178857353115,
+    "Y": -205.64550204879646,
     "Zoom": 0.93743229668600125
   }
 }
