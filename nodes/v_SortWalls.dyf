@@ -9,6 +9,10 @@
       "Wall": {
         "Key": "Revit.Elements.Wall",
         "Value": "RevitNodes.dll"
+      },
+      "Revit.Elements.Wall": {
+        "Key": "Revit.Elements.Wall",
+        "Value": "RevitNodes.dll"
       }
     }
   },
@@ -19,7 +23,7 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
       "NodeType": "InputNode",
       "Parameter": {
-        "Name": "wall",
+        "Name": "walls",
         "TypeName": "Revit.Elements.Wall",
         "TypeRank": 1,
         "DefaultValue": null,
@@ -45,7 +49,7 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "basic_wall",
+      "Symbol": "basic_walls",
       "Id": "fb2a178989134203a77753870abd6856",
       "Inputs": [
         {
@@ -66,7 +70,7 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "curtain_wall",
+      "Symbol": "curtain_walls",
       "Id": "2e7587412e8c4a6f932d76118cde7c92",
       "Inputs": [
         {
@@ -87,7 +91,7 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "stacked_wall",
+      "Symbol": "stacked_walls",
       "Id": "5bd1360a7c7541bca88a0824ba292fd9",
       "Inputs": [
         {
@@ -107,7 +111,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import clr\r\n\r\nclr.AddReference(\"RevitAPI\")\r\nfrom Autodesk.Revit.DB import *\r\n\r\nwalls = UnwrapElement(IN[0])\r\n\r\nbasic_wall = []\r\ncurtain_wall = []\r\nstacked_wall = []\r\n\r\nfor w in walls:\r\n\tif w.CurtainGrid != None:\r\n\t\tcurtain_wall.append(w)\r\n\telif w.IsStackedWall:\r\n\t\tstacked_wall.append(w)\r\n\telse:\r\n\t\tbasic_wall.append(w)\r\n\r\nOUT = [basic_wall, curtain_wall, stacked_wall]",
+      "Code": "walls = UnwrapElement(IN[0])\r\n\r\nbasic_wall = []\r\ncurtain_wall = []\r\nstacked_wall = []\r\n\r\nfor w in walls:\r\n\tif w.CurtainGrid != None:\r\n\t\tcurtain_wall.append(w)\r\n\telif w.IsStackedWall:\r\n\t\tstacked_wall.append(w)\r\n\telse:\r\n\t\tbasic_wall.append(w)\r\n\r\nOUT = [basic_wall, curtain_wall, stacked_wall]",
       "VariableInputPorts": true,
       "Id": "035a4ee04da946a39aeb98b46b98bde1",
       "Inputs": [
@@ -237,69 +241,69 @@
     },
     "NodeViews": [
       {
-        "ShowGeometry": true,
-        "Name": "Input",
         "Id": "8403589a9daa444b9d5e66e021d746c4",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
         "Excluded": false,
-        "X": 282.90875836769692,
+        "X": 158.77140338748609,
         "Y": 345.5812873716547
       },
       {
-        "ShowGeometry": true,
-        "Name": "Output",
         "Id": "fb2a178989134203a77753870abd6856",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 790.5,
         "Y": 300.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Output",
         "Id": "2e7587412e8c4a6f932d76118cde7c92",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 789.5,
         "Y": 365.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Output",
         "Id": "5bd1360a7c7541bca88a0824ba292fd9",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 790.5,
         "Y": 427.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Python Script",
         "Id": "035a4ee04da946a39aeb98b46b98bde1",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 452.37458499615786,
         "Y": 346.48659036146523
       },
       {
-        "ShowGeometry": true,
-        "Name": "Code Block",
         "Id": "3cc3eaaf69a440829af0c24fd74a4e1c",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 615.92280927260776,
         "Y": 351.8710839581546
       }
     ],
     "Annotations": [],
-    "X": 42.623634209609008,
-    "Y": -60.790444777527341,
-    "Zoom": 1.4097287639800073
+    "X": -1204.6047518559565,
+    "Y": -1024.7305023309948,
+    "Zoom": 3.8030307971237867
   }
 }
