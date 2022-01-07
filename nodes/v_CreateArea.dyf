@@ -3,7 +3,7 @@
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Area",
   "Description": "",
-  "Name": "v_NewArea",
+  "Name": "v_CreateArea",
   "ElementResolver": {
     "ResolutionMap": {
       "Point": {
