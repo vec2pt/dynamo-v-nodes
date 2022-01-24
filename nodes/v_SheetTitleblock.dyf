@@ -1,0 +1,174 @@
+{
+  "Uuid": "9073973e-6275-43a5-938c-0b5c06324123",
+  "IsCustomNode": true,
+  "Category": "v-nodes.Revit.Sheet",
+  "Description": "",
+  "Name": "v_SheetTitleblock",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Sheets": {
+        "Key": "archilab.Revit.Views.Sheets",
+        "Value": "archilab2022.dll"
+      },
+      "Revit.Elements.Views.Sheet": {
+        "Key": "Revit.Elements.Views.Sheet",
+        "Value": "RevitNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nclr.AddReference(\"RevitAPI\")\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference(\"RevitServices\")\r\nfrom RevitServices.Persistence import DocumentManager\r\n\r\nsheet = UnwrapElement(IN[0])\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\n\r\ntitleblocks_ids = sheet.GetDependentElements(ElementCategoryFilter(BuiltInCategory.OST_TitleBlocks))\r\nOUT = [doc.GetElement(id) for id in title_blocks_ids]\r\n",
+      "VariableInputPorts": true,
+      "Id": "cdef182a021d42fea5b57ccfcf954977",
+      "Inputs": [
+        {
+          "Id": "7da899fd79a14e50a84b00902ee1dc59",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "450043cd5bf246009dcff111b14777b1",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "sheet",
+        "TypeName": "Revit.Elements.Views.Sheet",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "5f41752db722417fb16f7630c3901c2b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a0475d93f7a447248831d44ebd22f8bb",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "titleblocks",
+      "Id": "6f98e4d3506746b0af40baeeb552c14f",
+      "Inputs": [
+        {
+          "Id": "2f28ea9debe849da8b8b0f7cba72919f",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "450043cd5bf246009dcff111b14777b1",
+      "End": "2f28ea9debe849da8b8b0f7cba72919f",
+      "Id": "55fb22eb5ab9427099a73994703a93d4"
+    },
+    {
+      "Start": "a0475d93f7a447248831d44ebd22f8bb",
+      "End": "7da899fd79a14e50a84b00902ee1dc59",
+      "Id": "4a6204cb5a9c468483cc79b2ba97912f"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.3.1.11775",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "cdef182a021d42fea5b57ccfcf954977",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 566.96153973587161,
+        "Y": 462.78611304145193
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "5f41752db722417fb16f7630c3901c2b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 245.44059327084494,
+        "Y": 463.17346727291931
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "6f98e4d3506746b0af40baeeb552c14f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 744.5,
+        "Y": 463.0
+      }
+    ],
+    "Annotations": [],
+    "X": -248.87143770174407,
+    "Y": -382.221485629864,
+    "Zoom": 1.8777441607754493
+  }
+}
