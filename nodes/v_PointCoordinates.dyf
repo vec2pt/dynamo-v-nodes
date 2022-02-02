@@ -2,7 +2,7 @@
   "Uuid": "f08041b7-ce34-407e-a7e7-891d18d90bbf",
   "IsCustomNode": true,
   "Category": "v-nodes.Geometry",
-  "Description": "",
+  "Description": "Return point coordinates as a list.",
   "Name": "v_PointCoordinates",
   "ElementResolver": {
     "ResolutionMap": {
@@ -326,7 +326,7 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.6.1.8786",
+      "Version": "2.3.1.11775",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
@@ -420,13 +420,13 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 88.4793258796376,
-        "Y": 395.7203362382453
+        "X": 86.961126123379358,
+        "Y": 386.61113770069619
       }
     ],
     "Annotations": [],
-    "X": 251.76201225394118,
-    "Y": 77.572116812255729,
-    "Zoom": 0.80332159346259768
+    "X": 259.50533097363086,
+    "Y": 7.1300633918224321,
+    "Zoom": 0.88878922829715568
   }
 }

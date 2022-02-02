@@ -2,7 +2,7 @@
   "Uuid": "dcfa6e63-0dc7-429c-8613-be04a5ca8562",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Selection",
-  "Description": "",
+  "Description": "Get all elements from the document.",
   "Name": "v_AllElementsInDocument",
   "ElementResolver": {
     "ResolutionMap": {}

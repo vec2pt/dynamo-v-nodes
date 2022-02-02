@@ -2,7 +2,7 @@
   "Uuid": "697a47ff-3ac3-4581-94ad-d950c0360722",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Wall",
-  "Description": "",
+  "Description": "Identifies if the wall is a stacked wall.",
   "Name": "v_IsStackedWall",
   "ElementResolver": {
     "ResolutionMap": {

@@ -2,7 +2,7 @@
   "Uuid": "c8584bb2-dd20-4cc8-8a16-9e6960b71b22",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Views",
-  "Description": "",
+  "Description": "The scope box for the view. ",
   "Name": "v_ViewScopeBox",
   "ElementResolver": {
     "ResolutionMap": {
@@ -12,6 +12,10 @@
       },
       "Elements.Element": {
         "Key": "Revit.Elements.Element",
+        "Value": "RevitNodes.dll"
+      },
+      "Revit.Elements.Views.View": {
+        "Key": "Revit.Elements.Views.View",
         "Value": "RevitNodes.dll"
       }
     }
@@ -83,7 +87,7 @@
       "NodeType": "InputNode",
       "Parameter": {
         "Name": "view",
-        "TypeName": "Revit.Elements.Element",
+        "TypeName": "Revit.Elements.Views.View",
         "TypeRank": 0,
         "DefaultValue": null,
         "Description": ""
@@ -157,15 +161,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -17.0,
-      "EyeY": 24.0,
-      "EyeZ": 50.0,
-      "LookX": 12.0,
-      "LookY": -13.0,
-      "LookZ": -58.0,
-      "UpX": 0.0,
-      "UpY": 1.0,
-      "UpZ": 0.0
+      "EyeX": -954.29654690211532,
+      "EyeY": 2355.1083693109485,
+      "EyeZ": 638.64235573219594,
+      "LookX": -123.72432403327116,
+      "LookY": -281.2004240531478,
+      "LookZ": -1331.0225926214389,
+      "UpX": 0.00080768742075649287,
+      "UpY": 0.99996192306417664,
+      "UpZ": 0.0086890772142233837
     },
     "NodeViews": [
       {
@@ -195,8 +199,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 460.5,
-        "Y": 446.0
+        "X": 403.5,
+        "Y": 445.0
       },
       {
         "ShowGeometry": true,

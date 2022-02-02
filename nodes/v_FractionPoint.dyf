@@ -2,7 +2,7 @@
   "Uuid": "fe4db344-9501-4854-8e4a-b3bce4495ec2",
   "IsCustomNode": true,
   "Category": "v-nodes.Geometry",
-  "Description": "",
+  "Description": "Calculate fraction point between two points.",
   "Name": "v_FractionPoint",
   "ElementResolver": {
     "ResolutionMap": {

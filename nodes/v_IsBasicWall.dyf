@@ -2,7 +2,7 @@
   "Uuid": "25db1c7c-ea32-4098-97a2-e1e1b0f00f13",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Wall",
-  "Description": "",
+  "Description": "Identifies if the wall is a basic wall.",
   "Name": "v_IsBasicWall",
   "ElementResolver": {
     "ResolutionMap": {

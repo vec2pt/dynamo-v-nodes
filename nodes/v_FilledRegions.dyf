@@ -2,7 +2,7 @@
   "Uuid": "c3ac3cbc-34b1-4d56-8aa6-130607acbf3e",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Selection",
-  "Description": "",
+  "Description": "Get all filled regions.",
   "Name": "v_FilledRegions",
   "ElementResolver": {
     "ResolutionMap": {

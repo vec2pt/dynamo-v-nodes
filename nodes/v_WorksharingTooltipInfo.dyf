@@ -2,7 +2,7 @@
   "Uuid": "b230f039-5350-4d0c-82ee-3e63775da0bb",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Worksharing",
-  "Description": "",
+  "Description": "Return worksharing information about an element.",
   "Name": "v_WorksharingTooltipInfo",
   "ElementResolver": {
     "ResolutionMap": {
@@ -23,11 +23,11 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
       "NodeType": "InputNode",
       "Parameter": {
-        "Name": "elem",
+        "Name": "element",
         "TypeName": "Revit.Elements.Element",
         "TypeRank": 0,
         "DefaultValue": null,
-        "Description": "Element or View"
+        "Description": ""
       },
       "Id": "1f9b273868964f5a9b0716503193c1a0",
       "Inputs": [],

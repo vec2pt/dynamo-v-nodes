@@ -2,7 +2,7 @@
   "Uuid": "a3031cbf-7644-48e0-8988-55ac6dea43c6",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Worksharing",
-  "Description": "",
+  "Description": "Determines if the element not editable.",
   "Name": "v_IsEditable",
   "ElementResolver": {
     "ResolutionMap": {

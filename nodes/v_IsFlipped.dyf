@@ -2,7 +2,7 @@
   "Uuid": "e4261a00-5a17-441a-8492-68536841d18f",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Element",
-  "Description": "",
+  "Description": "Property to test whether the orientation of family instance is flipped.",
   "Name": "v_IsFlipped",
   "ElementResolver": {
     "ResolutionMap": {}

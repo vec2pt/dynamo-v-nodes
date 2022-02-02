@@ -2,7 +2,7 @@
   "Uuid": "a0c19e15-2bd9-454b-a875-ac951e601559",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Room",
-  "Description": "",
+  "Description": "Get room level.",
   "Name": "v_RoomLevel",
   "ElementResolver": {
     "ResolutionMap": {

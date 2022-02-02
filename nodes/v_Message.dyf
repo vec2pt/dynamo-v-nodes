@@ -2,7 +2,7 @@
   "Uuid": "7b96708a-93d6-4ef7-b3e6-666f1ea5d5a2",
   "IsCustomNode": true,
   "Category": "v-nodes.UI",
-  "Description": "",
+  "Description": "Dialog box that can be used to display information.",
   "Name": "v_Message",
   "ElementResolver": {
     "ResolutionMap": {}
@@ -85,7 +85,7 @@
         "TypeName": "string",
         "TypeRank": 0,
         "DefaultValue": "\"v_nodes\"",
-        "Description": ""
+        "Description": " Title of the task dialog."
       },
       "Id": "ed754f798c6945ac9d7cdc4e032332e8",
       "Inputs": [],
@@ -111,7 +111,7 @@
         "TypeName": "string",
         "TypeRank": 0,
         "DefaultValue": null,
-        "Description": ""
+        "Description": "The large primary text that appears at the top of a task dialog."
       },
       "Id": "4b00089fc4e743d2b0db4a729c87a2e9",
       "Inputs": [],
@@ -137,7 +137,7 @@
         "TypeName": "string",
         "TypeRank": 0,
         "DefaultValue": "null",
-        "Description": ""
+        "Description": "The smaller text that appears just below the main instructions."
       },
       "Id": "04b13436d1524f1da66bc75e662ce949",
       "Inputs": [],
@@ -163,7 +163,7 @@
         "TypeName": "string",
         "TypeRank": 0,
         "DefaultValue": "null",
-        "Description": ""
+        "Description": "The text in the footer area of the task dialog."
       },
       "Id": "db27c8c7296b44c38d6f716859dcc3d4",
       "Inputs": [],
@@ -269,7 +269,7 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.3.0.5885",
+      "Version": "2.3.1.11775",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
@@ -293,8 +293,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 915.17838023417562,
-        "Y": 470.18417416049897
+        "X": 923.08989745778626,
+        "Y": 456.11925465185811
       },
       {
         "ShowGeometry": true,
@@ -303,8 +303,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 629.99734399086708,
-        "Y": 385.41923478174016
+        "X": 618.56959689009636,
+        "Y": 367.83808539593906
       },
       {
         "ShowGeometry": true,
@@ -313,8 +313,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 736.5219453003009,
-        "Y": 448.62236362272995
+        "X": 308.42095775604469,
+        "Y": 440.71084639911953
       },
       {
         "ShowGeometry": true,
@@ -323,8 +323,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 645.56158652939178,
-        "Y": 519.47528544083161
+        "X": 313.27786313775152,
+        "Y": 506.2894234014808
       },
       {
         "ShowGeometry": true,
@@ -333,8 +333,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 611.75845553296938,
-        "Y": 580.73305814856667
+        "X": 442.10036395998895,
+        "Y": 576.33777080211632
       },
       {
         "ShowGeometry": true,
@@ -343,8 +343,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 662.221485950415,
-        "Y": 643.06406496523789
+        "X": 669.25394570473532,
+        "Y": 645.70123737310792
       },
       {
         "ShowGeometry": true,
@@ -358,8 +358,8 @@
       }
     ],
     "Annotations": [],
-    "X": -534.18028639971635,
-    "Y": -207.86833241315117,
+    "X": -89.180286399716351,
+    "Y": -221.86833241315117,
     "Zoom": 1.1375820522947404
   }
 }

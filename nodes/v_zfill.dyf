@@ -101,11 +101,11 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
       "NodeType": "InputNode",
       "Parameter": {
-        "Name": "width",
+        "Name": "len",
         "TypeName": "int",
         "TypeRank": 0,
         "DefaultValue": "2",
-        "Description": ""
+        "Description": "A number specifying the desired length of the string"
       },
       "Id": "8bd9f6729a654ca08d54a51b6c7b1a38",
       "Inputs": [],
@@ -149,21 +149,21 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.6.1.8786",
+      "Version": "2.3.1.11775",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -17.0,
-      "EyeY": 24.0,
-      "EyeZ": 50.0,
-      "LookX": 12.0,
-      "LookY": -13.0,
-      "LookZ": -58.0,
-      "UpX": 0.0,
-      "UpY": 1.0,
-      "UpZ": 0.0
+      "EyeX": -954.29654690211532,
+      "EyeY": 2355.1083693109485,
+      "EyeZ": 638.64235573219594,
+      "LookX": -123.72432403327116,
+      "LookY": -281.2004240531478,
+      "LookZ": -1331.0225926214389,
+      "UpX": 0.00080768742075649287,
+      "UpY": 0.99996192306417664,
+      "UpZ": 0.0086890772142233837
     },
     "NodeViews": [
       {
@@ -173,8 +173,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 202.31099876183566,
-        "Y": 393.26038701331044
+        "X": 219.18087976239167,
+        "Y": 396.07203384673659
       },
       {
         "ShowGeometry": true,
@@ -203,13 +203,13 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 184.22686204989486,
-        "Y": 454.90380830293327
+        "X": -133.4892301272439,
+        "Y": 459.58988635864341
       }
     ],
     "Annotations": [],
-    "X": -125.30213681957662,
-    "Y": -109.5257608637545,
-    "Zoom": 1.2633317726382167
+    "X": 251.25638789846937,
+    "Y": 9.8743087435866528,
+    "Zoom": 1.0669903361740798
   }
 }

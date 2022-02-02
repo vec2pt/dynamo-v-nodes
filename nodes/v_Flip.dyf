@@ -2,7 +2,7 @@
   "Uuid": "5d42972d-49ae-40f2-be45-eae2ffc51c9c",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Element",
-  "Description": "",
+  "Description": "Flip element.",
   "Name": "v_Flip",
   "ElementResolver": {
     "ResolutionMap": {}

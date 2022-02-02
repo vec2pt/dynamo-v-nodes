@@ -2,7 +2,7 @@
   "Uuid": "7d860e9e-4a21-42af-8b7f-173a70f8e535",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Views",
-  "Description": "",
+  "Description": "Sort views based on its types.",
   "Name": "v_SortViews",
   "ElementResolver": {
     "ResolutionMap": {
@@ -22,7 +22,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\nviews = UnwrapElement(IN[0])\r\n\r\nsorted_views = {}\r\nfor v in views:\r\n\tv_type = v.ViewType.ToString()\r\n\tif v_type in sorted_views:\r\n\t\tsorted_views[v_type].append(v)\r\n\telse:\r\n\t\tsorted_views[v_type] = [v]\r\n\r\nOUT = sorted_views, sorted_views.keys(), sorted_views.values()",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nviews = UnwrapElement(IN[0])\r\n\r\nsorted_views = {}\r\nfor v in views:\r\n\tv_type = v.ViewType.ToString()\r\n\tif v_type in sorted_views:\r\n\t\tsorted_views[v_type].append(v)\r\n\telse:\r\n\t\tsorted_views[v_type] = [v]\r\n\r\nOUT = sorted_views, sorted_views.keys(), sorted_views.values()",
       "VariableInputPorts": true,
       "Id": "7f8af7eb2d7a4f45bc163fa8fb9c4d21",
       "Inputs": [
@@ -55,7 +55,7 @@
       "NodeType": "InputNode",
       "Parameter": {
         "Name": "views",
-        "TypeName": "Revit.Elements.Views.View",
+        "TypeName": "var",
         "TypeRank": 1,
         "DefaultValue": null,
         "Description": ""
@@ -186,6 +186,84 @@
       ],
       "Replication": "Disabled",
       "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Object.IsNull@var",
+      "Id": "c1f5bb57983e44658b74729ff8672eb5",
+      "Inputs": [
+        {
+          "Id": "38ec67c01bfe4ebfa6a961add8ab1d0e",
+          "Name": "obj",
+          "Description": "Object to test.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "567e4ca132194c0da872b928f5e50083",
+          "Name": "bool",
+          "Description": "Whether object is null.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Determines the if the given object is null.\n\nObject.IsNull (obj: var): bool"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
+      "Id": "e94a838cfafc4acaacdf2e24ee866232",
+      "Inputs": [
+        {
+          "Id": "7321d0afe7bf4e92b6f737d7af4d8f5d",
+          "Name": "list",
+          "Description": "List to filter.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1bce2522e1cf4d2e9847105d6e7b5e06",
+          "Name": "mask",
+          "Description": "List of booleans representing a mask.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "db5d5be174154c6a8836b3cdd3fd557b",
+          "Name": "in",
+          "Description": "Items whose mask index is true.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6582b9507e4c49e0b1cdf317930b2ce6",
+          "Name": "out",
+          "Description": "Items whose mask index is false.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Filters a sequence by looking up corresponding indices in a separate list of booleans.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
     }
   ],
   "Connectors": [
@@ -196,8 +274,13 @@
     },
     {
       "Start": "70c44f0b241c4406a5faa272c322c46c",
-      "End": "eb4fa4b281474f5a835c1b8c6406ad16",
-      "Id": "703c63b2fe44476f949c19d3e9b4ca9e"
+      "End": "38ec67c01bfe4ebfa6a961add8ab1d0e",
+      "Id": "9134862a08104ece979202f8ee7a9e78"
+    },
+    {
+      "Start": "70c44f0b241c4406a5faa272c322c46c",
+      "End": "7321d0afe7bf4e92b6f737d7af4d8f5d",
+      "Id": "c6006b3adb6e496db9d50cca309cdf72"
     },
     {
       "Start": "5b0004cb7bf244539db54a0253417b73",
@@ -213,6 +296,16 @@
       "Start": "0b9d581b704949f79379eba61b585c3b",
       "End": "cb44c1497c4b4c19bad2241f9a5b2c82",
       "Id": "508030a3e24346818f619fb8efcda538"
+    },
+    {
+      "Start": "567e4ca132194c0da872b928f5e50083",
+      "End": "1bce2522e1cf4d2e9847105d6e7b5e06",
+      "Id": "2930310065484897bed4c7d55cd445b1"
+    },
+    {
+      "Start": "6582b9507e4c49e0b1cdf317930b2ce6",
+      "End": "eb4fa4b281474f5a835c1b8c6406ad16",
+      "Id": "0a95a31967e14596a7101047af3c3361"
     }
   ],
   "Dependencies": [],
@@ -247,8 +340,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 596.0,
-        "Y": 398.0
+        "X": 776.7659283668861,
+        "Y": 420.09361346706385
       },
       {
         "ShowGeometry": true,
@@ -257,8 +350,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 261.01182371294664,
-        "Y": 397.07343382452689
+        "X": 196.61074310666964,
+        "Y": 394.67040842877037
       },
       {
         "ShowGeometry": true,
@@ -267,8 +360,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 873.96871155118117,
-        "Y": 356.70241848170434
+        "X": 1054.7346399180672,
+        "Y": 378.79603194876819
       },
       {
         "ShowGeometry": true,
@@ -277,8 +370,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 875.40804752478,
-        "Y": 414.85312211208878
+        "X": 1056.173975891666,
+        "Y": 436.94673557915263
       },
       {
         "ShowGeometry": true,
@@ -287,8 +380,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 875.65070363038444,
-        "Y": 472.56448976887435
+        "X": 1056.4166319972705,
+        "Y": 494.6581032359382
       },
       {
         "ShowGeometry": true,
@@ -297,13 +390,33 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 740.0,
-        "Y": 402.0
+        "X": 920.7659283668861,
+        "Y": 424.09361346706385
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Object.IsNull",
+        "Id": "c1f5bb57983e44658b74729ff8672eb5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 374.32596969311913,
+        "Y": 462.17701318873748
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.FilterByBoolMask",
+        "Id": "e94a838cfafc4acaacdf2e24ee866232",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 590.534649006278,
+        "Y": 393.907647977821
       }
     ],
     "Annotations": [],
-    "X": -85.629524646798018,
-    "Y": 7.8769809301280134,
-    "Zoom": 1.0792537289518345
+    "X": -287.34752576178005,
+    "Y": -281.71808785156975,
+    "Zoom": 1.4936443080800197
   }
 }

@@ -2,10 +2,15 @@
   "Uuid": "effbb20b-7da5-48fe-856c-7adac4b10b21",
   "IsCustomNode": true,
   "Category": "v-nodes.Geometry",
-  "Description": "",
+  "Description": "Determines point equality.",
   "Name": "v_PointsEquality",
   "ElementResolver": {
-    "ResolutionMap": {}
+    "ResolutionMap": {
+      "Autodesk.DesignScript.Geometry.Point": {
+        "Key": "Autodesk.DesignScript.Geometry.Point",
+        "Value": "ProtoGeometry.dll"
+      }
+    }
   },
   "Inputs": [],
   "Outputs": [],
@@ -105,7 +110,7 @@
       "NodeType": "InputNode",
       "Parameter": {
         "Name": "point_1",
-        "TypeName": "var",
+        "TypeName": "Autodesk.DesignScript.Geometry.Point",
         "TypeRank": -1,
         "DefaultValue": null,
         "Description": ""
@@ -152,7 +157,7 @@
       "NodeType": "InputNode",
       "Parameter": {
         "Name": "point_2",
-        "TypeName": "var",
+        "TypeName": "Autodesk.DesignScript.Geometry.Point",
         "TypeRank": -1,
         "DefaultValue": null,
         "Description": ""
@@ -420,15 +425,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -17.0,
-      "EyeY": 24.0,
-      "EyeZ": 50.0,
-      "LookX": 12.0,
-      "LookY": -13.0,
-      "LookZ": -58.0,
-      "UpX": 0.0,
-      "UpY": 1.0,
-      "UpZ": 0.0
+      "EyeX": -954.29654690211532,
+      "EyeY": 2355.1083693109485,
+      "EyeZ": 638.64235573219594,
+      "LookX": -123.72432403327116,
+      "LookY": -281.2004240531478,
+      "LookZ": -1331.0225926214389,
+      "UpX": 0.00080768742075649287,
+      "UpY": 0.99996192306417664,
+      "UpZ": 0.0086890772142233837
     },
     "NodeViews": [
       {
@@ -468,8 +473,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 132.5,
-        "Y": 261.0
+        "X": -13.494065281899111,
+        "Y": 265.74777448071211
       },
       {
         "ShowGeometry": true,
@@ -488,8 +493,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 141.5,
-        "Y": 544.0
+        "X": -15.176557863501444,
+        "Y": 551.12166172106822
       },
       {
         "ShowGeometry": true,
@@ -533,8 +538,8 @@
       }
     ],
     "Annotations": [],
-    "X": -38.6875,
-    "Y": 52.044999999999987,
+    "X": 87.3125,
+    "Y": 44.044999999999987,
     "Zoom": 0.8425
   }
 }

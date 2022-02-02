@@ -2,7 +2,7 @@
   "Uuid": "7a6e9145-bd21-4258-8a85-738889b7e437",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Tag",
-  "Description": "",
+  "Description": "Create a multicategory tag for a Revit element.",
   "Name": "v_CreateMulticategoryTag",
   "ElementResolver": {
     "ResolutionMap": {
@@ -33,6 +33,10 @@
       "Autodesk.DesignScript.Geometry.Point": {
         "Key": "Autodesk.DesignScript.Geometry.Point",
         "Value": "ProtoGeometry.dll"
+      },
+      "Revit.Elements.Views.View": {
+        "Key": "Revit.Elements.Views.View",
+        "Value": "RevitNodes.dll"
       }
     }
   },
@@ -111,10 +115,10 @@
       "NodeType": "InputNode",
       "Parameter": {
         "Name": "view",
-        "TypeName": "var",
+        "TypeName": "Revit.Elements.Views.View",
         "TypeRank": 0,
         "DefaultValue": null,
-        "Description": ""
+        "Description": "The view in which the tag will be visible."
       },
       "Id": "e4d5185d51af48d8a306dfe8ab7e75b4",
       "Inputs": [],
@@ -161,7 +165,7 @@
         "TypeName": "var",
         "TypeRank": 0,
         "DefaultValue": null,
-        "Description": ""
+        "Description": "The host reference of the tag."
       },
       "Id": "214593c0780047dba985f380c9ef081f",
       "Inputs": [],
@@ -187,7 +191,7 @@
         "TypeName": "Autodesk.DesignScript.Geometry.Point",
         "TypeRank": 0,
         "DefaultValue": null,
-        "Description": ""
+        "Description": "End point of the leader"
       },
       "Id": "94eb0a9f0c8246e79476706195132bc9",
       "Inputs": [],
@@ -213,7 +217,7 @@
         "TypeName": "bool",
         "TypeRank": 0,
         "DefaultValue": "true",
-        "Description": ""
+        "Description": "When true, the tag will be created with a straight leader with an attached end."
       },
       "Id": "ea562c49365442a9b4e97f4a74a24e6b",
       "Inputs": [],
@@ -239,7 +243,7 @@
         "TypeName": "bool",
         "TypeRank": 0,
         "DefaultValue": "true",
-        "Description": ""
+        "Description": "When true, the tag will be created with horizontal orientation."
       },
       "Id": "98e981d733d449d497ab39a421648fb0",
       "Inputs": [],
@@ -304,15 +308,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -17.0,
-      "EyeY": 24.0,
-      "EyeZ": 50.0,
-      "LookX": 12.0,
-      "LookY": -13.0,
-      "LookZ": -58.0,
-      "UpX": 0.0,
-      "UpY": 1.0,
-      "UpZ": 0.0
+      "EyeX": -954.29654690211532,
+      "EyeY": 2355.1083693109485,
+      "EyeZ": 638.64235573219594,
+      "LookX": -123.72432403327116,
+      "LookY": -281.2004240531478,
+      "LookZ": -1331.0225926214389,
+      "UpX": 0.00080768742075649287,
+      "UpY": 0.99996192306417664,
+      "UpZ": 0.0086890772142233837
     },
     "NodeViews": [
       {
@@ -332,8 +336,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 98.451403887688912,
-        "Y": 57.907127429805584
+        "X": -110.40048659304159,
+        "Y": -1.5260664373681578
       },
       {
         "ShowGeometry": true,
@@ -352,8 +356,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 53.589632829373613,
-        "Y": 117.64794816414685
+        "X": -12.757016050241987,
+        "Y": 67.895833972964184
       },
       {
         "ShowGeometry": true,
@@ -362,8 +366,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -47.788336933045343,
-        "Y": 177.17278617710576
+        "X": -98.773670151868487,
+        "Y": 151.68011956769419
       },
       {
         "ShowGeometry": true,
@@ -372,8 +376,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 115.40388768898481,
-        "Y": 238.74946004319651
+        "X": -407.63530653859743,
+        "Y": 222.92642559597556
       },
       {
         "ShowGeometry": true,
@@ -382,13 +386,13 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 75.017278617710616,
-        "Y": 302.291576673866
+        "X": -272.05053159259069,
+        "Y": 290.37293174487723
       }
     ],
     "Annotations": [],
-    "X": 229.23726999190069,
-    "Y": 199.40458743250548,
-    "Zoom": 0.97676875
+    "X": 536.47097786825941,
+    "Y": 261.54901292047964,
+    "Zoom": 1.1375820522947397
   }
 }

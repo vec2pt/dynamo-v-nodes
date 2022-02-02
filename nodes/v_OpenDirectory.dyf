@@ -1,0 +1,215 @@
+{
+  "Uuid": "405c4b4c-43e0-40f5-92a5-00e824e2c3c1",
+  "IsCustomNode": true,
+  "Category": "v-nodes.UI",
+  "Description": "Open a directory in Windows Explorer.",
+  "Name": "v_OpenDirectory",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "directory_path",
+      "Id": "51a1f06a89174488943947414d458ad8",
+      "Inputs": [
+        {
+          "Id": "4f21813244e94ea183561cdaf62858bb",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "directory_path",
+        "TypeName": "string",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "1b75f384f2684b7f81f6103994eafb41",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "364b2019d5d545f289353bc1d6220bd0",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "open_directory",
+        "TypeName": "bool",
+        "TypeRank": 0,
+        "DefaultValue": "false",
+        "Description": ""
+      },
+      "Id": "1f077da295a84cae9895e6082c3f7b7a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "411620309091434bb2ac351548bd7c26",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import subprocess\r\n\r\npath = IN[0]\r\nif IN[1]: subprocess.Popen(r'explorer \"{}\"'.format(path))\r\nOUT = path",
+      "VariableInputPorts": true,
+      "Id": "b410191b6c7543d48589f30ac4c6e32c",
+      "Inputs": [
+        {
+          "Id": "ab8e8879c0b947e2aace794613bdbefa",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e3226eb306b14decbfcd5035a0641c48",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "62029afac3af40a98fa70e2ac43b5a49",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "364b2019d5d545f289353bc1d6220bd0",
+      "End": "ab8e8879c0b947e2aace794613bdbefa",
+      "Id": "9fc3908f87a7486db276277ef0f8a019"
+    },
+    {
+      "Start": "411620309091434bb2ac351548bd7c26",
+      "End": "e3226eb306b14decbfcd5035a0641c48",
+      "Id": "5192c1af0a3947caa63ff13a13635922"
+    },
+    {
+      "Start": "62029afac3af40a98fa70e2ac43b5a49",
+      "End": "4f21813244e94ea183561cdaf62858bb",
+      "Id": "857b072384224d52835b78dc02a143dc"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.3.1.11775",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "51a1f06a89174488943947414d458ad8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1106.5,
+        "Y": 405.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "1b75f384f2684b7f81f6103994eafb41",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 671.5,
+        "Y": 390.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "1f077da295a84cae9895e6082c3f7b7a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 626.5,
+        "Y": 452.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "b410191b6c7543d48589f30ac4c6e32c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 945.0,
+        "Y": 406.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}

@@ -2,7 +2,7 @@
   "Uuid": "335a7275-3256-4b59-9813-2aa291a3818c",
   "IsCustomNode": true,
   "Category": "v-nodes.List.Inspect",
-  "Description": "",
+  "Description": "Identifies if any item in an iterable are true.",
   "Name": "v_Any",
   "ElementResolver": {
     "ResolutionMap": {}

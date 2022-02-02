@@ -2,7 +2,7 @@
   "Uuid": "714be26d-c130-4aa6-b735-ed1bc0fab862",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Document",
-  "Description": "",
+  "Description": "Returns the site location information.",
   "Name": "v_SiteLocationInfo",
   "ElementResolver": {
     "ResolutionMap": {}
@@ -46,9 +46,9 @@
       "NodeType": "InputNode",
       "Parameter": {
         "Name": "refresh",
-        "TypeName": "var",
-        "TypeRank": -1,
-        "DefaultValue": null,
+        "TypeName": "bool",
+        "TypeRank": 0,
+        "DefaultValue": "true",
         "Description": ""
       },
       "Id": "12b82984a83f4f1a9f73df7ab226750e",
@@ -71,7 +71,7 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "place_name",
+      "Symbol": "//The place name of the site.\r\nplace_name",
       "Id": "f6bae42fe4c44e6b8bb90d21e7063daf",
       "Inputs": [
         {
@@ -92,7 +92,7 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "latitude",
+      "Symbol": "//The latitude of the site location.\r\nlatitude",
       "Id": "f33cb1ccb9164d8b968ffa17c82a5deb",
       "Inputs": [
         {
@@ -113,7 +113,7 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "longitude",
+      "Symbol": "//The longitude of the site location.\r\nlongitude",
       "Id": "5cb07ce0cf5341a9870e74687eec5aba",
       "Inputs": [
         {
@@ -134,7 +134,7 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "time_zone",
+      "Symbol": "//The time-zone for the site.\r\ntime_zone",
       "Id": "9fbedd4ba2e94387998feaf3d572a3e4",
       "Inputs": [
         {
@@ -255,15 +255,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 256563749.4412066,
-      "EyeY": 319162653.63072151,
-      "EyeZ": -63069808.21435219,
-      "LookX": -256586606.87108979,
-      "LookY": -319161147.1454457,
-      "LookZ": 63074197.780335061,
-      "UpX": -0.59786270515626,
-      "UpY": 0.78801075360674711,
-      "UpZ": 0.14696679211108571
+      "EyeX": -954.29654690211532,
+      "EyeY": 2355.1083693109485,
+      "EyeZ": 638.64235573219594,
+      "LookX": -123.72432403327116,
+      "LookY": -281.2004240531478,
+      "LookZ": -1331.0225926214389,
+      "UpX": 0.00080768742075649287,
+      "UpY": 0.99996192306417664,
+      "UpZ": 0.0086890772142233837
     },
     "NodeViews": [
       {
@@ -283,8 +283,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 281.09496100015531,
-        "Y": 293.18947429454971
+        "X": 205.65137071810028,
+        "Y": 292.18355975745573
       },
       {
         "ShowGeometry": true,
@@ -293,8 +293,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 710.230874272902,
-        "Y": 230.73345801798095
+        "X": 708.722002467261,
+        "Y": 215.64473996156994
       },
       {
         "ShowGeometry": true,
@@ -313,8 +313,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 712.65427742332622,
-        "Y": 351.55741508912524
+        "X": 711.64836288623212,
+        "Y": 368.15500495117732
       },
       {
         "ShowGeometry": true,
@@ -323,8 +323,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 713.34667832344735,
-        "Y": 414.56589700015161
+        "X": 714.35259286054145,
+        "Y": 443.23446130733277
       },
       {
         "ShowGeometry": true,
@@ -338,8 +338,8 @@
       }
     ],
     "Annotations": [],
-    "X": -459.50767221906267,
-    "Y": -304.979186572952,
+    "X": -519.50767221906267,
+    "Y": -370.979186572952,
     "Zoom": 1.9882404779412912
   }
 }

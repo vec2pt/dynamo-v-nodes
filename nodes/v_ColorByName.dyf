@@ -2,10 +2,15 @@
   "Uuid": "1f69282f-dd6b-4e85-b1e3-6439f2600381",
   "IsCustomNode": true,
   "Category": "v-nodes.Display",
-  "Description": "",
+  "Description": "Gets a color by the name.",
   "Name": "v_ColorByName",
   "ElementResolver": {
-    "ResolutionMap": {}
+    "ResolutionMap": {
+      "DSCore.Color": {
+        "Key": "DSCore.Color",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
   },
   "Inputs": [],
   "Outputs": [],
@@ -17,7 +22,7 @@
         "Name": "color_name",
         "TypeName": "string",
         "TypeRank": 1,
-        "DefaultValue": null,
+        "DefaultValue": "[\"White\"]",
         "Description": ""
       },
       "Id": "4f69f572955a4a7eafa2506fa76ab100",
@@ -103,7 +108,7 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "color",
+      "Symbol": "color: DSCore.Color",
       "Id": "d6e734d9f02a4ee987818b95afdd1f73",
       "Inputs": [
         {
@@ -308,8 +313,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 163.84701461690457,
-        "Y": 363.19844639134374
+        "X": 59.223191859591822,
+        "Y": 362.954337855924
       },
       {
         "ShowGeometry": true,
@@ -319,7 +324,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 837.9084125897208,
-        "Y": 307.74887563949932
+        "Y": 286.37681757464441
       },
       {
         "ShowGeometry": true,
@@ -339,7 +344,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 837.7498467788879,
-        "Y": 419.79896520846131
+        "Y": 445.12881180384488
       },
       {
         "ShowGeometry": true,
@@ -348,8 +353,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 838.22471698688935,
-        "Y": 476.75357939819895
+        "X": 839.80783239910068,
+        "Y": 518.706137821803
       },
       {
         "ShowGeometry": true,
@@ -383,8 +388,8 @@
       }
     ],
     "Annotations": [],
-    "X": -694.36612150781525,
-    "Y": -502.02369716995963,
-    "Zoom": 2.080710428125
+    "X": 132.37454230514641,
+    "Y": -107.19170803939591,
+    "Zoom": 1.2633317726382167
   }
 }

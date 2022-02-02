@@ -2,7 +2,7 @@
   "Uuid": "a3bc9651-cb64-433c-ac55-65b61ce7b1a5",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Wall",
-  "Description": "",
+  "Description": "Identifies if the wall is a curtain wall.",
   "Name": "v_IsCurtainWall",
   "ElementResolver": {
     "ResolutionMap": {

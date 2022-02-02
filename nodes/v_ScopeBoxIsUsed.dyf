@@ -2,7 +2,7 @@
   "Uuid": "3f899f6e-a0d3-449d-a4e8-eadd5538d4af",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.ScopeBox",
-  "Description": "",
+  "Description": "Identifies if the scope box is used.",
   "Name": "v_ScopeBoxIsUsed",
   "ElementResolver": {
     "ResolutionMap": {

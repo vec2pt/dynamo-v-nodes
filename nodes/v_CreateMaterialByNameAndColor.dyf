@@ -2,8 +2,8 @@
   "Uuid": "5f660a2a-1cba-4143-a50b-cfa800152a1d",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Material",
-  "Description": "",
-  "Name": "v_MaterialByNameAndColor",
+  "Description": "Create a material by the name and color.",
+  "Name": "v_CreateMaterialByNameAndColor",
   "ElementResolver": {
     "ResolutionMap": {
       "DSCore.Color": {

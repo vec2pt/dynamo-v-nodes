@@ -2,7 +2,7 @@
   "Uuid": "9073973e-6275-43a5-938c-0b5c06324123",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Sheet",
-  "Description": "",
+  "Description": "Get all titleblocks at the sheet.",
   "Name": "v_SheetTitleblock",
   "ElementResolver": {
     "ResolutionMap": {

@@ -2,7 +2,7 @@
   "Uuid": "b112fb16-edd2-4985-a625-331788584776",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Document",
-  "Description": "",
+  "Description": "Returns Keynote file path.",
   "Name": "v_KeynoteFilePath",
   "ElementResolver": {
     "ResolutionMap": {}

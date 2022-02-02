@@ -2,7 +2,7 @@
   "Uuid": "df8cbd6e-ad5e-438b-824a-1843449067c4",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Element",
-  "Description": "",
+  "Description": "Replace Family type.",
   "Name": "v_ReplaceType",
   "ElementResolver": {
     "ResolutionMap": {

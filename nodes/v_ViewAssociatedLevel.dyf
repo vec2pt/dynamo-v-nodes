@@ -2,7 +2,7 @@
   "Uuid": "2a26148f-0d6d-40b5-abe1-37bc46ae6d05",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Views",
-  "Description": "",
+  "Description": "The level for the view.",
   "Name": "v_ViewAssociatedLevel",
   "ElementResolver": {
     "ResolutionMap": {
@@ -17,6 +17,10 @@
       "ViewPlan": {
         "Key": "Rhythm.Revit.Views.ViewPlan",
         "Value": "RhythmRevit.dll"
+      },
+      "Revit.Elements.Views.View": {
+        "Key": "Revit.Elements.Views.View",
+        "Value": "RevitNodes.dll"
       }
     }
   },
@@ -28,8 +32,8 @@
       "NodeType": "InputNode",
       "Parameter": {
         "Name": "view",
-        "TypeName": "var",
-        "TypeRank": 1,
+        "TypeName": "Revit.Elements.Views.View",
+        "TypeRank": 0,
         "DefaultValue": null,
         "Description": ""
       },
@@ -73,7 +77,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "views = UnwrapElement(IN[0])\r\nOUT = [v.GenLevel for v in views]",
+      "Code": "view = UnwrapElement(IN[0])\r\nOUT = view.GenLevel",
       "VariableInputPorts": true,
       "Id": "519dc2f57f7043ad96670c1f985d81ef",
       "Inputs": [
@@ -128,15 +132,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 72285.961624751682,
-      "EyeY": 265747.64964758832,
-      "EyeZ": 3273.3066613081755,
-      "LookX": -68974.526728032986,
-      "LookY": -265718.56374698231,
-      "LookZ": -6871.6480292799579,
-      "UpX": -0.886617409037902,
-      "UpY": 0.4539904997395518,
-      "UpZ": -0.088330040966620033
+      "EyeX": -954.29654690211532,
+      "EyeY": 2355.1083693109485,
+      "EyeZ": 638.64235573219594,
+      "LookX": -123.72432403327116,
+      "LookY": -281.2004240531478,
+      "LookZ": -1331.0225926214389,
+      "UpX": 0.00080768742075649287,
+      "UpY": 0.99996192306417664,
+      "UpZ": 0.0086890772142233837
     },
     "NodeViews": [
       {
@@ -146,8 +150,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 490.01181997219135,
-        "Y": 389.25856042049145
+        "X": 267.4893722752883,
+        "Y": 390.84607354966965
       },
       {
         "ShowGeometry": true,
@@ -166,13 +170,13 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 638.36324221366453,
-        "Y": 388.66872785118039
+        "X": 631.63477110554652,
+        "Y": 388.66872785118
       }
     ],
     "Annotations": [],
-    "X": -1036.644617890898,
-    "Y": -714.04061304285528,
-    "Zoom": 2.45244625
+    "X": -584.033107770302,
+    "Y": -523.20448587070439,
+    "Zoom": 2.080710428125
   }
 }

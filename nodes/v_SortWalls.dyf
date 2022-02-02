@@ -2,7 +2,7 @@
   "Uuid": "8a27497e-2676-4655-adfe-ea257bd8a65c",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Wall",
-  "Description": "",
+  "Description": "Sort walls based on its types.",
   "Name": "v_SortWalls",
   "ElementResolver": {
     "ResolutionMap": {

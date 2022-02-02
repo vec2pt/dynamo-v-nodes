@@ -2,7 +2,7 @@
   "Uuid": "1b816d96-0be6-4f0a-b697-1ba86bd77849",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Worksharing",
-  "Description": "",
+  "Description": "Returns the username.",
   "Name": "v_RevitUsername",
   "ElementResolver": {
     "ResolutionMap": {}

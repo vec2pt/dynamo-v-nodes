@@ -2,13 +2,17 @@
   "Uuid": "ffa37d85-a7ed-4d74-93fe-b28cf8d0017a",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Level",
-  "Description": "",
+  "Description": "Get Level plane.",
   "Name": "v_LevelPlane",
   "ElementResolver": {
     "ResolutionMap": {
       "Plane": {
         "Key": "Autodesk.DesignScript.Geometry.Plane",
         "Value": "ProtoGeometry.dll"
+      },
+      "Revit.Elements.Level": {
+        "Key": "Revit.Elements.Level",
+        "Value": "RevitNodes.dll"
       }
     }
   },
@@ -109,7 +113,7 @@
       "NodeType": "InputNode",
       "Parameter": {
         "Name": "level",
-        "TypeName": "var",
+        "TypeName": "Revit.Elements.Level",
         "TypeRank": -1,
         "DefaultValue": null,
         "Description": ""
@@ -182,21 +186,21 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.3.0.5885",
+      "Version": "2.3.1.11775",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -5784.9206385010048,
-      "EyeY": 4360.2873555355018,
-      "EyeZ": -8882.8331225941674,
-      "LookX": -1781.6725204159748,
-      "LookY": -7413.3121874589851,
-      "LookZ": 4595.9550734170607,
-      "UpX": -0.25108536403799286,
-      "UpY": 0.7193398003386926,
-      "UpZ": 0.64769313074533708
+      "EyeX": -954.29654690211532,
+      "EyeY": 2355.1083693109485,
+      "EyeZ": 638.64235573219594,
+      "LookX": -123.72432403327116,
+      "LookY": -281.2004240531478,
+      "LookZ": -1331.0225926214389,
+      "UpX": 0.00080768742075649287,
+      "UpY": 0.99996192306417664,
+      "UpZ": 0.0086890772142233837
     },
     "NodeViews": [
       {
@@ -236,8 +240,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 490.5,
-        "Y": 471.0
+        "X": 347.5,
+        "Y": 472.0
       },
       {
         "ShowGeometry": true,

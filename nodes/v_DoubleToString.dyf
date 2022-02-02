@@ -18,7 +18,7 @@
         "TypeName": "double",
         "TypeRank": 0,
         "DefaultValue": null,
-        "Description": ""
+        "Description": "The number to be rounded and converted into a string."
       },
       "Id": "5c6b27ba272e4449a2ff5cdd0f7eda43",
       "Inputs": [],
@@ -44,7 +44,7 @@
         "TypeName": "int",
         "TypeRank": 0,
         "DefaultValue": "2",
-        "Description": ""
+        "Description": "The number of decimals to use when rounding the number."
       },
       "Id": "5012700c8a984e108b5cdf4626993834",
       "Inputs": [],
@@ -140,7 +140,7 @@
         "TypeName": "bool",
         "TypeRank": 0,
         "DefaultValue": "true",
-        "Description": ""
+        "Description": "Suppress trailing 0's."
       },
       "Id": "d9fceee315fb41d48f95679112d45fb2",
       "Inputs": [],
@@ -189,7 +189,7 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.6.1.8786",
+      "Version": "2.3.1.11775",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
@@ -213,8 +213,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 430.57533393199014,
-        "Y": 1054.4459493632594
+        "X": 64.778456237601688,
+        "Y": 1052.8738376026763
       },
       {
         "ShowGeometry": true,
@@ -223,8 +223,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 430.23746262780026,
-        "Y": 1119.6673851250387
+        "X": 48.9656538485097,
+        "Y": 1123.1444670577957
       },
       {
         "ShowGeometry": true,
@@ -233,7 +233,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 779.23851560544438,
+        "X": 769.75892669444431,
         "Y": 1076.1760955512634
       },
       {
@@ -253,13 +253,13 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 364.16919426689645,
-        "Y": 1177.9301939640516
+        "X": 319.85530370450743,
+        "Y": 1189.7679505159265
       }
     ],
     "Annotations": [],
-    "X": -407.56352864958751,
-    "Y": -1509.6555427743717,
-    "Zoom": 1.6203724159629527
+    "X": -34.261980823503109,
+    "Y": -1187.0719207822215,
+    "Zoom": 1.3713674846084172
   }
 }

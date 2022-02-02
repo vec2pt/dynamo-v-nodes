@@ -2,7 +2,7 @@
   "Uuid": "a631726f-9403-4f0e-8a65-6a05de600a01",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Area",
-  "Description": "",
+  "Description": "Create a boundary line.",
   "Name": "v_CreateBoundaryLine",
   "ElementResolver": {
     "ResolutionMap": {
@@ -93,7 +93,7 @@
         "TypeName": "Revit.Elements.Views.AreaPlanView",
         "TypeRank": 0,
         "DefaultValue": null,
-        "Description": ""
+        "Description": "The view of boundary line."
       },
       "Id": "fb301b1a2f6542f9a341ae606a1b1df7",
       "Inputs": [],
@@ -164,15 +164,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 72285.961624751682,
-      "EyeY": 265747.64964758832,
-      "EyeZ": 3273.3066613081755,
-      "LookX": -68974.526728032986,
-      "LookY": -265718.56374698231,
-      "LookZ": -6871.6480292799579,
-      "UpX": -0.886617409037902,
-      "UpY": 0.4539904997395518,
-      "UpZ": -0.088330040966620033
+      "EyeX": -954.29654690211532,
+      "EyeY": 2355.1083693109485,
+      "EyeZ": 638.64235573219594,
+      "LookX": -123.72432403327116,
+      "LookY": -281.2004240531478,
+      "LookZ": -1331.0225926214389,
+      "UpX": 0.00080768742075649287,
+      "UpY": 0.99996192306417664,
+      "UpZ": 0.0086890772142233837
     },
     "NodeViews": [
       {

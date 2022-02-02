@@ -2,7 +2,7 @@
   "Uuid": "8f581c3d-5113-4b38-a4dc-7a0e9f3943c4",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Selection",
-  "Description": "",
+  "Description": "Get all materials from the document.",
   "Name": "v_AllMaterialsInDocument",
   "ElementResolver": {
     "ResolutionMap": {}

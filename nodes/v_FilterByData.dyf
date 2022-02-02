@@ -2,7 +2,7 @@
   "Uuid": "ddac21d4-2b18-493c-af67-8e5cb01ad623",
   "IsCustomNode": true,
   "Category": "v-nodes.List.Modify",
-  "Description": "",
+  "Description": "Filter by comparing new and old data.",
   "Name": "v_FilterByData",
   "ElementResolver": {
     "ResolutionMap": {}

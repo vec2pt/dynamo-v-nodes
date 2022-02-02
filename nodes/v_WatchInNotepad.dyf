@@ -2,7 +2,7 @@
   "Uuid": "b338350e-b4dd-4023-a7cd-9eb191ea55dc",
   "IsCustomNode": true,
   "Category": "v-nodes.UI",
-  "Description": "",
+  "Description": "Visualize the output of node in Notepad.",
   "Name": "v_WatchInNotepad",
   "ElementResolver": {
     "ResolutionMap": {}
@@ -416,8 +416,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 626.81991293459475,
-        "Y": 376.18449500267144
+        "X": 519.0787988754206,
+        "Y": 386.85193203823326
       },
       {
         "ShowGeometry": true,
@@ -426,8 +426,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1673.839691219215,
-        "Y": 369.69853177435937
+        "X": 1672.7729475156589,
+        "Y": 386.76643103125826
       },
       {
         "ShowGeometry": true,
@@ -436,8 +436,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 619.055790237487,
-        "Y": 607.67184882449726
+        "X": 605.18812209125679,
+        "Y": 604.47161771382878
       }
     ],
     "Annotations": [],

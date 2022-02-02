@@ -2,7 +2,7 @@
   "Uuid": "f6462b5a-b0a8-4318-b98e-e4dd5e3fb90e",
   "IsCustomNode": true,
   "Category": "v-nodes.List.Modify",
-  "Description": "",
+  "Description": "Clean by data.",
   "Name": "v_CleanByData",
   "ElementResolver": {
     "ResolutionMap": {}

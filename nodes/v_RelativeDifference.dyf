@@ -2,7 +2,7 @@
   "Uuid": "57a851e1-4235-4bc1-98ca-318a9f36bb25",
   "IsCustomNode": true,
   "Category": "v-nodes.Math",
-  "Description": "",
+  "Description": "Returns relative difference between numbers.",
   "Name": "v_RelativeDifference",
   "ElementResolver": {
     "ResolutionMap": {}

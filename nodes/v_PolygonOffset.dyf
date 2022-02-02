@@ -9,6 +9,10 @@
       "Polygon": {
         "Key": "Autodesk.DesignScript.Geometry.Polygon",
         "Value": "ProtoGeometry.dll"
+      },
+      "Autodesk.DesignScript.Geometry.Polygon": {
+        "Key": "Autodesk.DesignScript.Geometry.Polygon",
+        "Value": "ProtoGeometry.dll"
       }
     }
   },
@@ -111,7 +115,7 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "polygon",
+      "Symbol": "polygon: Autodesk.DesignScript.Geometry.Polygon",
       "Id": "8e020fac2dbc44329979e91c8956ad80",
       "Inputs": [
         {
@@ -160,15 +164,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -17.0,
-      "EyeY": 24.0,
-      "EyeZ": 50.0,
-      "LookX": 12.0,
-      "LookY": -13.0,
-      "LookZ": -58.0,
-      "UpX": 0.0,
-      "UpY": 1.0,
-      "UpZ": 0.0
+      "EyeX": -954.29654690211532,
+      "EyeY": 2355.1083693109485,
+      "EyeZ": 638.64235573219594,
+      "LookX": -123.72432403327116,
+      "LookY": -281.2004240531478,
+      "LookZ": -1331.0225926214389,
+      "UpX": 0.00080768742075649287,
+      "UpY": 0.99996192306417664,
+      "UpZ": 0.0086890772142233837
     },
     "NodeViews": [
       {

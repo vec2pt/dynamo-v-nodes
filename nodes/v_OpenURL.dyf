@@ -1,20 +1,11 @@
 {
-  "Uuid": "3c3c5be1-49d7-43af-a39e-6273875099e5",
+  "Uuid": "f885ddbf-7bc6-48d3-9294-197ddedea963",
   "IsCustomNode": true,
-  "Category": "v-nodes.Revit.Views",
-  "Description": "Get all elements which are visible in view.",
-  "Name": "v_AllElementsInView",
+  "Category": "v-nodes.UI",
+  "Description": "Open Url in default web browser.",
+  "Name": "v_OpenURL",
   "ElementResolver": {
-    "ResolutionMap": {
-      "Views": {
-        "Key": "archilab.Revit.Views.Views",
-        "Value": "archilab2022.dll"
-      },
-      "Revit.Elements.Views.View": {
-        "Key": "Revit.Elements.Views.View",
-        "Value": "RevitNodes.dll"
-      }
-    }
+    "ResolutionMap": {}
   },
   "Inputs": [],
   "Outputs": [],
@@ -22,12 +13,12 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nclr.AddReference(\"RevitAPI\")\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference(\"RevitServices\")\r\nfrom RevitServices.Persistence import DocumentManager\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\n\r\nrefresh = IN[1]\r\nview_id = UnwrapElement(IN[0]).Id\r\n\r\nelems = FilteredElementCollector(doc, view_id).WhereElementIsNotElementType().ToElements()\r\n\r\nOUT = elems",
+      "Code": "import webbrowser\r\n\r\nurl = IN[0]\r\nif IN[1]: webbrowser.open(url)\r\nOUT = url",
       "VariableInputPorts": true,
-      "Id": "01f0dfb755c84abf9d8c92fc1c71a481",
+      "Id": "cbed021ebf82418181296beb16661390",
       "Inputs": [
         {
-          "Id": "9c1fd498b9fd4573bad5e108a47d59b6",
+          "Id": "0ebd95e331bc40ef96b6cc314eaa0bfa",
           "Name": "IN[0]",
           "Description": "Input #0",
           "UsingDefaultValue": false,
@@ -36,7 +27,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "9e3c04933cb04e29a60a5df14b2ab244",
+          "Id": "1e3194d344dc4b62946639488efed577",
           "Name": "IN[1]",
           "Description": "Input #1",
           "UsingDefaultValue": false,
@@ -47,7 +38,7 @@
       ],
       "Outputs": [
         {
-          "Id": "48b2d61e05bd48cd88a9b6c46f88e77a",
+          "Id": "ef5a0ac1133345439531fff3bc422469",
           "Name": "OUT",
           "Description": "Result of the python script",
           "UsingDefaultValue": false,
@@ -63,17 +54,43 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
       "NodeType": "InputNode",
       "Parameter": {
-        "Name": "view",
-        "TypeName": "Revit.Elements.Views.View",
+        "Name": "url",
+        "TypeName": "string",
         "TypeRank": 0,
         "DefaultValue": null,
         "Description": ""
       },
-      "Id": "d4b2333bb1a14490937052ba8c68105c",
+      "Id": "8af7fa53d3304e8aaf8093a655b57cae",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "fede4a177681434a8d414bb3438cf15b",
+          "Id": "205784f7862740e995b66befaefd5f83",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "open_url",
+        "TypeName": "bool",
+        "TypeRank": 0,
+        "DefaultValue": "false",
+        "Description": ""
+      },
+      "Id": "ad7ca8ca9e004718a35f050e7f6e0e1c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "6a0f1dfbc2e241708d4204bf1fba504a",
           "Name": "",
           "Description": "Symbol",
           "UsingDefaultValue": false,
@@ -89,11 +106,11 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "elements",
-      "Id": "f2e92dd4318b414ba98f402ff668a8e0",
+      "Symbol": "url",
+      "Id": "3204e96addcb487d85c5a00034f5628c",
       "Inputs": [
         {
-          "Id": "88bb0985b6f74492b63be4e9db49e0a2",
+          "Id": "7b39667a66f44da2a66a0ae24207df8b",
           "Name": "",
           "Description": "",
           "UsingDefaultValue": false,
@@ -105,49 +122,23 @@
       "Outputs": [],
       "Replication": "Disabled",
       "Description": "A function output, use with custom nodes"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
-      "NodeType": "InputNode",
-      "Parameter": {
-        "Name": "refresh",
-        "TypeName": "bool",
-        "TypeRank": 0,
-        "DefaultValue": "true",
-        "Description": ""
-      },
-      "Id": "2a4fa86e786d4d63a5add005612e2aaa",
-      "Inputs": [],
-      "Outputs": [
-        {
-          "Id": "ab0a359aec4746c5ad6078930cac36b0",
-          "Name": "",
-          "Description": "Symbol",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
     }
   ],
   "Connectors": [
     {
-      "Start": "48b2d61e05bd48cd88a9b6c46f88e77a",
-      "End": "88bb0985b6f74492b63be4e9db49e0a2",
-      "Id": "bbfcbb9dd74f4a328566aad0f8a59149"
+      "Start": "ef5a0ac1133345439531fff3bc422469",
+      "End": "7b39667a66f44da2a66a0ae24207df8b",
+      "Id": "090ad0c476ca4b6fb9c1226f4630953e"
     },
     {
-      "Start": "fede4a177681434a8d414bb3438cf15b",
-      "End": "9c1fd498b9fd4573bad5e108a47d59b6",
-      "Id": "cfa149bc36864221818497354b52debd"
+      "Start": "205784f7862740e995b66befaefd5f83",
+      "End": "0ebd95e331bc40ef96b6cc314eaa0bfa",
+      "Id": "5004dba9d86846e7aac1188c943858fe"
     },
     {
-      "Start": "ab0a359aec4746c5ad6078930cac36b0",
-      "End": "9e3c04933cb04e29a60a5df14b2ab244",
-      "Id": "6d9ad7dff79d472b8978da5db5e24e91"
+      "Start": "6a0f1dfbc2e241708d4204bf1fba504a",
+      "End": "1e3194d344dc4b62946639488efed577",
+      "Id": "b47a9324fdb4411bb32bfc48035d1372"
     }
   ],
   "Dependencies": [],
@@ -164,61 +155,61 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -17.0,
-      "EyeY": 24.0,
-      "EyeZ": 50.0,
-      "LookX": 12.0,
-      "LookY": -13.0,
-      "LookZ": -58.0,
-      "UpX": 0.0,
-      "UpY": 1.0,
-      "UpZ": 0.0
+      "EyeX": -954.29654690211532,
+      "EyeY": 2355.1083693109485,
+      "EyeZ": 638.64235573219594,
+      "LookX": -123.72432403327116,
+      "LookY": -281.2004240531478,
+      "LookZ": -1331.0225926214389,
+      "UpX": 0.00080768742075649287,
+      "UpY": 0.99996192306417664,
+      "UpZ": 0.0086890772142233837
     },
     "NodeViews": [
       {
         "ShowGeometry": true,
         "Name": "Python Script",
-        "Id": "01f0dfb755c84abf9d8c92fc1c71a481",
+        "Id": "cbed021ebf82418181296beb16661390",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 337.5,
-        "Y": 263.0
+        "X": 554.97108730678713,
+        "Y": 371.0
       },
       {
         "ShowGeometry": true,
         "Name": "Input",
-        "Id": "d4b2333bb1a14490937052ba8c68105c",
+        "Id": "8af7fa53d3304e8aaf8093a655b57cae",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 30.787121064647124,
-        "Y": 264.08267731626586
+        "X": 392.5,
+        "Y": 353.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "ad7ca8ca9e004718a35f050e7f6e0e1c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 368.5,
+        "Y": 415.0
       },
       {
         "ShowGeometry": true,
         "Name": "Output",
-        "Id": "f2e92dd4318b414ba98f402ff668a8e0",
+        "Id": "3204e96addcb487d85c5a00034f5628c",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 508.86121246155381,
-        "Y": 262.7893706069305
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Input",
-        "Id": "2a4fa86e786d4d63a5add005612e2aaa",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 114.84251515250321,
-        "Y": 342.30414403785852
+        "X": 710.5,
+        "Y": 372.0
       }
     ],
     "Annotations": [],
-    "X": -68.182597558780458,
-    "Y": -264.06170001672092,
-    "Zoom": 1.5907768970610712
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
   }
 }
