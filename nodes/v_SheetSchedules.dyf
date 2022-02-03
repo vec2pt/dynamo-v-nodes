@@ -1,15 +1,11 @@
 {
-  "Uuid": "9073973e-6275-43a5-938c-0b5c06324123",
+  "Uuid": "95c49184-db0b-4b63-a46d-d5e1c8e4f04d",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Sheet",
-  "Description": "Get all titleblocks at the sheet.",
-  "Name": "v_SheetTitleblock",
+  "Description": "Get all schedules on the sheet.",
+  "Name": "v_SheetSchedules",
   "ElementResolver": {
     "ResolutionMap": {
-      "Sheets": {
-        "Key": "archilab.Revit.Views.Sheets",
-        "Value": "archilab2022.dll"
-      },
       "Revit.Elements.Views.Sheet": {
         "Key": "Revit.Elements.Views.Sheet",
         "Value": "RevitNodes.dll"
@@ -29,11 +25,11 @@
         "DefaultValue": null,
         "Description": ""
       },
-      "Id": "5f41752db722417fb16f7630c3901c2b",
+      "Id": "eb717678be884bdaa0ebc9a6a53f7751",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "a0475d93f7a447248831d44ebd22f8bb",
+          "Id": "d600d6ad1466476f8b88ae164b6a8fac",
           "Name": "",
           "Description": "Symbol",
           "UsingDefaultValue": false,
@@ -49,11 +45,11 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "titleblocks",
-      "Id": "6f98e4d3506746b0af40baeeb552c14f",
+      "Symbol": "schedules",
+      "Id": "985b078d6ba24eab915387db609e90e5",
       "Inputs": [
         {
-          "Id": "2f28ea9debe849da8b8b0f7cba72919f",
+          "Id": "6c7efe3a31b84fe5a931a7779ae45374",
           "Name": "",
           "Description": "",
           "UsingDefaultValue": false,
@@ -69,12 +65,12 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nclr.AddReference(\"RevitAPI\")\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference(\"RevitServices\")\r\nfrom RevitServices.Persistence import DocumentManager\r\n\r\nsheet = UnwrapElement(IN[0])\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\n\r\ntitleblocks_ids = sheet.GetDependentElements(ElementCategoryFilter(BuiltInCategory.OST_TitleBlocks))\r\nOUT = [doc.GetElement(id) for id in titleblocks_ids]\r\n",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nclr.AddReference(\"RevitAPI\")\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference(\"RevitServices\")\r\nfrom RevitServices.Persistence import DocumentManager\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\n\r\nsheet_id = UnwrapElement(IN[0]).Id.IntegerValue\r\nschedule_sheet_ins = FilteredElementCollector(doc).OfClass(ScheduleSheetInstance).WhereElementIsNotElementType().ToElements()\r\n\r\nOUT = [doc.GetElement(s.ScheduleId) for s in schedule_sheet_ins if s.OwnerViewId.IntegerValue == sheet_id]",
       "VariableInputPorts": true,
-      "Id": "ad5daf922a3d4d29a2774a3449186888",
+      "Id": "d250a96f0566410396d275b18f77d128",
       "Inputs": [
         {
-          "Id": "f98446c6abda465d90995f2d68ec8b1a",
+          "Id": "7685664fe29c4654a701c3a65800740c",
           "Name": "IN[0]",
           "Description": "Input #0",
           "UsingDefaultValue": false,
@@ -85,7 +81,7 @@
       ],
       "Outputs": [
         {
-          "Id": "609a85f37f2e4f3dbd6d1b3f97b5b4fc",
+          "Id": "916addac0a9d4099a1c3bd39355f85d6",
           "Name": "OUT",
           "Description": "Result of the python script",
           "UsingDefaultValue": false,
@@ -100,14 +96,14 @@
   ],
   "Connectors": [
     {
-      "Start": "a0475d93f7a447248831d44ebd22f8bb",
-      "End": "f98446c6abda465d90995f2d68ec8b1a",
-      "Id": "bea3df1ca16f43479512f67e57995ea7"
+      "Start": "d600d6ad1466476f8b88ae164b6a8fac",
+      "End": "7685664fe29c4654a701c3a65800740c",
+      "Id": "f0d49b22721f4bf9bbb73f159af235fe"
     },
     {
-      "Start": "609a85f37f2e4f3dbd6d1b3f97b5b4fc",
-      "End": "2f28ea9debe849da8b8b0f7cba72919f",
-      "Id": "c91e7ae2a46c4e85bff36aed097e4f92"
+      "Start": "916addac0a9d4099a1c3bd39355f85d6",
+      "End": "6c7efe3a31b84fe5a931a7779ae45374",
+      "Id": "e714f327855f4494a2b949ef573ee51a"
     }
   ],
   "Dependencies": [],
@@ -138,37 +134,37 @@
       {
         "ShowGeometry": true,
         "Name": "Input",
-        "Id": "5f41752db722417fb16f7630c3901c2b",
+        "Id": "eb717678be884bdaa0ebc9a6a53f7751",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 245.44059327084494,
-        "Y": 463.17346727291931
+        "X": 885.5,
+        "Y": 482.99999999999972
       },
       {
         "ShowGeometry": true,
         "Name": "Output",
-        "Id": "6f98e4d3506746b0af40baeeb552c14f",
+        "Id": "985b078d6ba24eab915387db609e90e5",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 744.5,
-        "Y": 463.0
+        "X": 1381.6420840454207,
+        "Y": 480.88165093792458
       },
       {
         "ShowGeometry": true,
         "Name": "Python Script",
-        "Id": "ad5daf922a3d4d29a2774a3449186888",
+        "Id": "d250a96f0566410396d275b18f77d128",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 586.273391603635,
-        "Y": 463.4398571477862
+        "X": 1222.7086492441679,
+        "Y": 479.36799375523958
       }
     ],
     "Annotations": [],
-    "X": -248.87143770174407,
-    "Y": -382.221485629864,
-    "Zoom": 1.8777441607754493
+    "X": -1916.7207528221363,
+    "Y": -588.90669402739013,
+    "Zoom": 2.0566802683342771
   }
 }
