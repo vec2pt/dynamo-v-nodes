@@ -1,0 +1,170 @@
+{
+  "Uuid": "e5bbd764-5979-49ff-9d06-3358a5d76ab0",
+  "IsCustomNode": true,
+  "Category": "v-nodes.Geometry",
+  "Description": "Calculate area of a polygon.",
+  "Name": "v_PolygonArea",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Autodesk.DesignScript.Geometry.Polygon": {
+        "Key": "Autodesk.DesignScript.Geometry.Polygon",
+        "Value": "ProtoGeometry.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "area: double",
+      "Id": "b7abeaba78c3405d8e6617f1deff5439",
+      "Inputs": [
+        {
+          "Id": "3bf65ec037754f36995b860b2463e532",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "polygon",
+        "TypeName": "Autodesk.DesignScript.Geometry.Polygon",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "0a35ab272af24b928ff52b71478a2200",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0dacd0f04ac243e4a4fbb7410acd181d",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\n\r\npoligon = IN[0]\r\n\r\nif poligon.IsPlanar:\r\n\tcs1 = CoordinateSystem.ByPlane(poligon.BasePlane())\r\n\tcs2 = CoordinateSystem.ByPlane(Plane.XY())\r\n\tpoligon = Geometry.Transform(poligon, cs1, cs2)\r\n\tpol_pts = [p for p in poligon.Points]\r\n\tarea = 0\r\n\tfor i in range(len(pol_pts)):\r\n\t\tarea += pol_pts[i-1].X * pol_pts[i].Y\r\n\t\tarea -= pol_pts[i-1].Y * pol_pts[i].X\r\n\tOUT = abs(area)/2 \r\nelse: \r\n\tOUT = None",
+      "VariableInputPorts": true,
+      "Id": "f108c59b2ac04f70b95ad27c4faaeac0",
+      "Inputs": [
+        {
+          "Id": "d78f7575dd854392a6b8dfe9757d733f",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1e83b3be08ba43959955ff4eb627e0e8",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "0dacd0f04ac243e4a4fbb7410acd181d",
+      "End": "d78f7575dd854392a6b8dfe9757d733f",
+      "Id": "3e53173f6063415e93e048158a7ffbdd"
+    },
+    {
+      "Start": "1e83b3be08ba43959955ff4eb627e0e8",
+      "End": "3bf65ec037754f36995b860b2463e532",
+      "Id": "5d811b7e1daa46e69dad3505fd6ae1fd"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.3.1.11775",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 9.0238639741652023,
+      "EyeY": 14.72506296940875,
+      "EyeZ": 25.344134309020383,
+      "LookX": -14.023863974165202,
+      "LookY": -3.72506296940875,
+      "LookZ": -33.344134309020383,
+      "UpX": 0.043887371877457032,
+      "UpY": 0.99357185567658812,
+      "UpZ": 0.10434973022040933
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "b7abeaba78c3405d8e6617f1deff5439",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1465.562170726012,
+        "Y": 488.510859293294
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "0a35ab272af24b928ff52b71478a2200",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 856.5,
+        "Y": 486.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "f108c59b2ac04f70b95ad27c4faaeac0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1304.563185084691,
+        "Y": 487.44964198263096
+      }
+    ],
+    "Annotations": [],
+    "X": -2695.0135976495476,
+    "Y": -831.729746570087,
+    "Zoom": 2.080710428125
+  }
+}

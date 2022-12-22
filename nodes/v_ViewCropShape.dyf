@@ -1,23 +1,11 @@
 {
-  "Uuid": "2a26148f-0d6d-40b5-abe1-37bc46ae6d05",
+  "Uuid": "56190936-c85f-45d2-9f74-d98629852daa",
   "IsCustomNode": true,
   "Category": "v-nodes.Revit.Views",
-  "Description": "The level for the view.",
-  "Name": "v_ViewAssociatedLevel",
+  "Description": "Gets the view crop boundaries.",
+  "Name": "v_ViewCropShape",
   "ElementResolver": {
     "ResolutionMap": {
-      "Category": {
-        "Key": "Revit.Elements.Category",
-        "Value": "RevitNodes.dll"
-      },
-      "Views": {
-        "Key": "archilab.Revit.Views.Views",
-        "Value": "archilab2022.dll"
-      },
-      "ViewPlan": {
-        "Key": "Rhythm.Revit.Views.ViewPlan",
-        "Value": "RhythmRevit.dll"
-      },
       "Revit.Elements.Views.View": {
         "Key": "Revit.Elements.Views.View",
         "Value": "RevitNodes.dll"
@@ -28,40 +16,14 @@
   "Outputs": [],
   "Nodes": [
     {
-      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
-      "NodeType": "InputNode",
-      "Parameter": {
-        "Name": "view",
-        "TypeName": "Revit.Elements.Views.View",
-        "TypeRank": 0,
-        "DefaultValue": null,
-        "Description": ""
-      },
-      "Id": "f0a24b3d6d7743d09cf98f2e1e6477f5",
-      "Inputs": [],
-      "Outputs": [
-        {
-          "Id": "2cde19d1a13d40c9ba833ace07b661d9",
-          "Name": "",
-          "Description": "Symbol",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
-    },
-    {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "level",
-      "Id": "781e3c5016a942d8b8231c5e55db7b89",
+      "Symbol": "crop_shape",
+      "Id": "045b1fddea4941e4a3e9359902cf2d46",
       "Inputs": [
         {
-          "Id": "7694772b1a204245855126721acb2156",
+          "Id": "5ad4de4032ea45e69cf676973202bdee",
           "Name": "",
           "Description": "",
           "UsingDefaultValue": false,
@@ -75,14 +37,40 @@
       "Description": "A function output, use with custom nodes"
     },
     {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "view",
+        "TypeName": "Revit.Elements.Views.View",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "320b6ec50c944d18ad89f55d88a44251",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e40ccecb9d7b48e9886756fc3b520b8f",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "view = UnwrapElement(IN[0])\r\nOUT = view.GenLevel",
+      "Code": "import clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nclr.AddReference(\"RevitAPI\")\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference(\"RevitNodes\")\r\nimport Revit\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\n\r\n\r\nview = UnwrapElement(IN[0])\r\n\r\nboundary = view.GetCropRegionShapeManager().GetCropShape()\r\nif len(boundary) > 0:\r\n\tOUT = [l.ToProtoType() for l in boundary[0]]\r\nelse:\r\n\tOUT = None\r\n",
       "VariableInputPorts": true,
-      "Id": "519dc2f57f7043ad96670c1f985d81ef",
+      "Id": "f0241c5d0da5437791faac23f79c258e",
       "Inputs": [
         {
-          "Id": "26aaa60185e349eda6bf882a00fc152b",
+          "Id": "3a8416ca0c4941bab9a993a46486020d",
           "Name": "IN[0]",
           "Description": "Input #0",
           "UsingDefaultValue": false,
@@ -93,7 +81,7 @@
       ],
       "Outputs": [
         {
-          "Id": "c5bc20be1f1e4f719285a4b0f70a78ac",
+          "Id": "4614b6e1087e47e48f5ca25f46d884cf",
           "Name": "OUT",
           "Description": "Result of the python script",
           "UsingDefaultValue": false,
@@ -108,14 +96,14 @@
   ],
   "Connectors": [
     {
-      "Start": "2cde19d1a13d40c9ba833ace07b661d9",
-      "End": "26aaa60185e349eda6bf882a00fc152b",
-      "Id": "69228d01ec0b48f3adea33c9c8c5d86a"
+      "Start": "e40ccecb9d7b48e9886756fc3b520b8f",
+      "End": "3a8416ca0c4941bab9a993a46486020d",
+      "Id": "a7c7378b0dcc46a49ed1a2803b3a76e4"
     },
     {
-      "Start": "c5bc20be1f1e4f719285a4b0f70a78ac",
-      "End": "7694772b1a204245855126721acb2156",
-      "Id": "1127025972414bc8a1afe465e6e8d08f"
+      "Start": "4614b6e1087e47e48f5ca25f46d884cf",
+      "End": "5ad4de4032ea45e69cf676973202bdee",
+      "Id": "259b7468c2ff4d1f88ac028c49d8b068"
     }
   ],
   "Dependencies": [],
@@ -132,51 +120,51 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -954.29654690211532,
-      "EyeY": 2355.1083693109485,
-      "EyeZ": 638.64235573219594,
-      "LookX": -123.72432403327116,
-      "LookY": -281.2004240531478,
-      "LookZ": -1331.0225926214389,
-      "UpX": 0.00080768742075649287,
-      "UpY": 0.99996192306417664,
-      "UpZ": 0.0086890772142233837
+      "EyeX": -10750.003496986268,
+      "EyeY": 2557.2891904904527,
+      "EyeZ": -5385.9771346450207,
+      "LookX": 2119.6353890961254,
+      "LookY": -2130.0502326165288,
+      "LookZ": 1334.2564612031101,
+      "UpX": 0.39731003859512815,
+      "UpY": 0.88294759285892965,
+      "UpZ": 0.25009654435070738
     },
     "NodeViews": [
       {
         "ShowGeometry": true,
-        "Name": "Input",
-        "Id": "f0a24b3d6d7743d09cf98f2e1e6477f5",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 267.4893722752883,
-        "Y": 390.84607354966965
-      },
-      {
-        "ShowGeometry": true,
         "Name": "Output",
-        "Id": "781e3c5016a942d8b8231c5e55db7b89",
+        "Id": "045b1fddea4941e4a3e9359902cf2d46",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 798.88505459592386,
-        "Y": 390.13977384154924
+        "X": 997.0,
+        "Y": 267.0
       },
       {
         "ShowGeometry": true,
-        "Name": "Python Script",
-        "Id": "519dc2f57f7043ad96670c1f985d81ef",
+        "Name": "Input",
+        "Id": "320b6ec50c944d18ad89f55d88a44251",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 631.63477110554652,
-        "Y": 388.66872785118
+        "X": 437.0,
+        "Y": 268.0
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Python Script",
+        "Id": "f0241c5d0da5437791faac23f79c258e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 798.0,
+        "Y": 267.0
       }
     ],
     "Annotations": [],
-    "X": -584.033107770302,
-    "Y": -523.20448587070439,
-    "Zoom": 2.080710428125
+    "X": -2852.9867636409444,
+    "Y": -862.164303242908,
+    "Zoom": 4.0
   }
 }

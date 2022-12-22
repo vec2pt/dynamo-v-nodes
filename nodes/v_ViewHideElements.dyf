@@ -1,26 +1,18 @@
 {
-  "Uuid": "0fd4e936-c746-4050-8a85-fdbe013b5e87",
+  "Uuid": "851963c3-80ff-4d48-a5f4-9d9dba8522f5",
   "IsCustomNode": true,
-  "Category": "v-nodes.Revit.Area",
-  "Description": "Create an Area.",
-  "Name": "v_CreateArea",
+  "Category": "v-nodes.Revit.Views",
+  "Description": "Sets the elements to be hidden in the view.",
+  "Name": "v_ViewHideElements",
   "ElementResolver": {
     "ResolutionMap": {
-      "Point": {
-        "Key": "Autodesk.DesignScript.Geometry.Point",
-        "Value": "ProtoGeometry.dll"
-      },
-      "AreaPlanView": {
-        "Key": "Revit.Elements.Views.AreaPlanView",
+      "Revit.Elements.Views.View": {
+        "Key": "Revit.Elements.Views.View",
         "Value": "RevitNodes.dll"
       },
-      "Revit.Elements.Views.AreaPlanView": {
-        "Key": "Revit.Elements.Views.AreaPlanView",
+      "Revit.Elements.Element": {
+        "Key": "Revit.Elements.Element",
         "Value": "RevitNodes.dll"
-      },
-      "Autodesk.DesignScript.Geometry.Point": {
-        "Key": "Autodesk.DesignScript.Geometry.Point",
-        "Value": "ProtoGeometry.dll"
       }
     }
   },
@@ -30,12 +22,12 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\n\r\nclr.AddReference(\"RevitAPI\")\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference(\"RevitServices\")\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\n\r\nclr.AddReference(\"RevitNodes\")\r\nimport Revit\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\n\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\npts = [p.ToRevitType() for p in IN[0]]\r\nview = UnwrapElement(IN[1])\r\n\r\nTransactionManager.Instance.EnsureInTransaction(doc)\r\nOUT = [doc.Create.NewArea(view, UV(pt.X, pt.Y)) for pt in pts]\r\nTransactionManager.Instance.TransactionTaskDone()\r\n\r\n\r\n",
+      "Code": "import clr\r\nclr.AddReference(\"RevitAPI\")\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference(\"RevitServices\")\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\n\r\nclr.AddReference(\"System\")\r\nfrom System.Collections.Generic import List\r\n\r\n\r\nview = UnwrapElement(IN[0])\r\nelems_ids = List[ElementId]([e.Id for e in UnwrapElement(IN[1])])\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\n\r\nTransactionManager.Instance.EnsureInTransaction(doc)\r\ntry:\r\n\tview.HideElements(elems_ids)\r\n\tOUT = True\r\nexcept:\r\n\tOUT = False\r\nTransactionManager.Instance.TransactionTaskDone()",
       "VariableInputPorts": true,
-      "Id": "cad24af36fb147a893f536cd490d9ea6",
+      "Id": "3aff0a1d274f42e89e177c75a0ea01a1",
       "Inputs": [
         {
-          "Id": "ed80256c83384102a30537d7b1f54d01",
+          "Id": "5606a6516f7e4b78a416eacb3dc72900",
           "Name": "IN[0]",
           "Description": "Input #0",
           "UsingDefaultValue": false,
@@ -44,7 +36,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "545ee147a1e348558fca65fbc990f52f",
+          "Id": "d6467385ed24443ead40258ab0ca1987",
           "Name": "IN[1]",
           "Description": "Input #1",
           "UsingDefaultValue": false,
@@ -55,7 +47,7 @@
       ],
       "Outputs": [
         {
-          "Id": "846d4fad90d446ea8603cc8fe9cb6052",
+          "Id": "72f1e7ff9e594a988b14d3d6741e7656",
           "Name": "OUT",
           "Description": "Result of the python script",
           "UsingDefaultValue": false,
@@ -71,17 +63,17 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
       "NodeType": "InputNode",
       "Parameter": {
-        "Name": "points",
-        "TypeName": "Autodesk.DesignScript.Geometry.Point",
-        "TypeRank": 1,
+        "Name": "view",
+        "TypeName": "Revit.Elements.Views.View",
+        "TypeRank": 0,
         "DefaultValue": null,
         "Description": ""
       },
-      "Id": "8e763b67e04447e88a188849de6c2b4a",
+      "Id": "3b637c82079e4053b5f1ec374b327ead",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "84defaa022af492e887233e83d822b34",
+          "Id": "1146c1772b11418190fdeaaecac196df",
           "Name": "",
           "Description": "Symbol",
           "UsingDefaultValue": false,
@@ -97,17 +89,17 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
       "NodeType": "InputNode",
       "Parameter": {
-        "Name": "area_plan_view",
-        "TypeName": "Revit.Elements.Views.AreaPlanView",
-        "TypeRank": 0,
+        "Name": "elements",
+        "TypeName": "Revit.Elements.Element",
+        "TypeRank": 1,
         "DefaultValue": null,
-        "Description": "The view of area element."
+        "Description": ""
       },
-      "Id": "2f4ffa04c479435685b4e4c0fc667963",
+      "Id": "479ca680ca93437198d462ae66218bc1",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "951289a28c85491c99ee55bc88b1db5c",
+          "Id": "3c52fde471a94fc483c87e7c49d73b02",
           "Name": "",
           "Description": "Symbol",
           "UsingDefaultValue": false,
@@ -123,11 +115,11 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "area",
-      "Id": "983e76d9c5654140a338d541119c0f3d",
+      "Symbol": "bool",
+      "Id": "bd4498295bb34eb3b4560b337cf9de8e",
       "Inputs": [
         {
-          "Id": "e589b3fc246c423dbdf3b8fdaf174a26",
+          "Id": "e586915784fd484698bf41beeebe8bea",
           "Name": "",
           "Description": "",
           "UsingDefaultValue": false,
@@ -143,19 +135,19 @@
   ],
   "Connectors": [
     {
-      "Start": "846d4fad90d446ea8603cc8fe9cb6052",
-      "End": "e589b3fc246c423dbdf3b8fdaf174a26",
-      "Id": "e2b8e4499fc247198e7f306c079f67f6"
+      "Start": "72f1e7ff9e594a988b14d3d6741e7656",
+      "End": "e586915784fd484698bf41beeebe8bea",
+      "Id": "f9155919dcc34cfba43d0585b0e43f3e"
     },
     {
-      "Start": "84defaa022af492e887233e83d822b34",
-      "End": "ed80256c83384102a30537d7b1f54d01",
-      "Id": "be2debd005d644b18442a2bcc15dab3b"
+      "Start": "1146c1772b11418190fdeaaecac196df",
+      "End": "5606a6516f7e4b78a416eacb3dc72900",
+      "Id": "c1ec741423ec4a72a74aabf0c7d4b8f2"
     },
     {
-      "Start": "951289a28c85491c99ee55bc88b1db5c",
-      "End": "545ee147a1e348558fca65fbc990f52f",
-      "Id": "074d8c3215954ca09ccf652922b38be1"
+      "Start": "3c52fde471a94fc483c87e7c49d73b02",
+      "End": "d6467385ed24443ead40258ab0ca1987",
+      "Id": "54fc723fca694b3d8a18fe70bceb8867"
     }
   ],
   "Dependencies": [],
@@ -172,61 +164,61 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -954.29654690211532,
-      "EyeY": 2355.1083693109485,
-      "EyeZ": 638.64235573219594,
-      "LookX": -123.72432403327116,
-      "LookY": -281.2004240531478,
-      "LookZ": -1331.0225926214389,
-      "UpX": 0.00080768742075649287,
-      "UpY": 0.99996192306417664,
-      "UpZ": 0.0086890772142233837
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
     },
     "NodeViews": [
       {
         "ShowGeometry": true,
         "Name": "Python Script",
-        "Id": "cad24af36fb147a893f536cd490d9ea6",
+        "Id": "3aff0a1d274f42e89e177c75a0ea01a1",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 577.35160787106111,
-        "Y": 287.078429515553
+        "X": 368.5,
+        "Y": 320.0
       },
       {
         "ShowGeometry": true,
         "Name": "Input",
-        "Id": "8e763b67e04447e88a188849de6c2b4a",
+        "Id": "3b637c82079e4053b5f1ec374b327ead",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 130.5,
-        "Y": 277.0
+        "X": 48.0,
+        "Y": 310.0
       },
       {
         "ShowGeometry": true,
         "Name": "Input",
-        "Id": "2f4ffa04c479435685b4e4c0fc667963",
+        "Id": "479ca680ca93437198d462ae66218bc1",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 101.5,
-        "Y": 336.0
+        "X": 28.0,
+        "Y": 378.0
       },
       {
         "ShowGeometry": true,
         "Name": "Output",
-        "Id": "983e76d9c5654140a338d541119c0f3d",
+        "Id": "bd4498295bb34eb3b4560b337cf9de8e",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 738.5,
-        "Y": 287.0
+        "X": 531.5,
+        "Y": 321.0
       }
     ],
     "Annotations": [],
-    "X": 227.0,
-    "Y": 31.0,
+    "X": 0.0,
+    "Y": 0.0,
     "Zoom": 1.0
   }
 }

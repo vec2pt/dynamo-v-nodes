@@ -1,0 +1,350 @@
+{
+  "Uuid": "0250ce2a-0ab1-4b3e-bdb9-91652fb65e27",
+  "IsCustomNode": true,
+  "Category": "v-nodes.Revit.Tag",
+  "Description": "Get tag points.",
+  "Name": "v_TagPoints",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Revit.Elements.Element": {
+        "Key": "Revit.Elements.Element",
+        "Value": "RevitNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\nclr.AddReference(\"RevitAPI\")\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference(\"RevitNodes\")\r\nimport Revit\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\n\r\ntag = UnwrapElement(IN[0])\r\n\r\nif tag.Location.GetType() == LocationPoint:\r\n\ttag_location = tag.Location.Point.ToPoint()\r\nelse:\r\n\ttag_location = None\r\n\t\r\ntag_head_position = tag.TagHeadPosition.ToPoint()\r\n\r\ntag_type = tag.GetType()\r\nif tag.HasLeader:\r\n\tif tag_type == Architecture.RoomTag or tag_type == AreaTag or tag_type == Mechanical.SpaceTag:\r\n\t\ttag_leader_end = tag.LeaderEnd.ToPoint()\r\n\telif tag.LeaderEndCondition == LeaderEndCondition.Free:\r\n\t\ttag_leader_end = tag.LeaderEnd.ToPoint()\r\n\telse:\r\n\t\ttag_leader_end = None\r\nelse:\r\n\ttag_leader_end = None\r\n\r\nif tag.HasLeader and tag.HasElbow:\r\n\ttag_leader_elbow = tag.LeaderElbow.ToPoint()\r\nelse:\r\n\ttag_leader_elbow = None\r\n\r\nOUT = tag_location, tag_head_position, tag_leader_end, tag_leader_elbow",
+      "VariableInputPorts": true,
+      "Id": "5805edbfa62e4a3d847bba688005361b",
+      "Inputs": [
+        {
+          "Id": "96d4e18128874972b6aa4854118ba870",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "257659c26cd9464ab74f2f49ebe62c72",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "tag_location",
+      "Id": "9bf351ae1bbd4dff9cc6df50ec72b249",
+      "Inputs": [
+        {
+          "Id": "09d736a57fdc415e8faa12f965d8f50a",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "tag_head_position",
+      "Id": "695b3f8fb2bf4235900d5a4b03ac974b",
+      "Inputs": [
+        {
+          "Id": "f3898f6d8b5c4ceeb006429063571036",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "tag_leader_end",
+      "Id": "7f49b749154645ed809b8c0f31110884",
+      "Inputs": [
+        {
+          "Id": "1fa57341fd284bb485aaabc74fde9e69",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "tag_leader_elbow",
+      "Id": "5dac37b220b84602b5c1eb7e66a24c9e",
+      "Inputs": [
+        {
+          "Id": "2028dda68b344b0fa5cfd7a8e3f9dc0a",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "tag",
+        "TypeName": "Revit.Elements.Element",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "0cdabbc93dff4372b4617246a5949430",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "df2da15d5814460f8d36d81c55420bfa",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "tag_location = pts[0];\ntag_head_position = pts[1];\ntag_leader_end = pts[2];\ntag_leader_elbow = pts[3];",
+      "Id": "244ffde02bed43c5a18fb02631a9f8af",
+      "Inputs": [
+        {
+          "Id": "c32c7639f9cf45fda7530aa85638b38e",
+          "Name": "pts",
+          "Description": "pts",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "68bce14170e34ee68b62e3ec402d4221",
+          "Name": "",
+          "Description": "tag_location",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cdfb8cc2e86a48a5a96eb94e3ae4bda7",
+          "Name": "",
+          "Description": "tag_head_position",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0dfbc24424794633a5a34e6edfe59bcb",
+          "Name": "",
+          "Description": "tag_leader_end",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0033ba37723345849b75fd98eb382681",
+          "Name": "",
+          "Description": "tag_leader_elbow",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "257659c26cd9464ab74f2f49ebe62c72",
+      "End": "c32c7639f9cf45fda7530aa85638b38e",
+      "Id": "eeb53bfc97bb4fa285ba3a23aceae26b"
+    },
+    {
+      "Start": "df2da15d5814460f8d36d81c55420bfa",
+      "End": "96d4e18128874972b6aa4854118ba870",
+      "Id": "c5b574696382417ea2d78cef5ace973a"
+    },
+    {
+      "Start": "68bce14170e34ee68b62e3ec402d4221",
+      "End": "09d736a57fdc415e8faa12f965d8f50a",
+      "Id": "49cd17dbe7714646a0e7edc7d9106cc6"
+    },
+    {
+      "Start": "cdfb8cc2e86a48a5a96eb94e3ae4bda7",
+      "End": "f3898f6d8b5c4ceeb006429063571036",
+      "Id": "9e77701704484c5889bfaebd60d4161b"
+    },
+    {
+      "Start": "0dfbc24424794633a5a34e6edfe59bcb",
+      "End": "1fa57341fd284bb485aaabc74fde9e69",
+      "Id": "97a05a750ced4f2ba479f80d0af63084"
+    },
+    {
+      "Start": "0033ba37723345849b75fd98eb382681",
+      "End": "2028dda68b344b0fa5cfd7a8e3f9dc0a",
+      "Id": "bd0733f1abf24a4fbcab3948a0a30d1e"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.3.1.11775",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -10750.003496986268,
+      "EyeY": 2557.2891904904527,
+      "EyeZ": -5385.9771346450207,
+      "LookX": 2119.6353890961254,
+      "LookY": -2130.0502326165288,
+      "LookZ": 1334.2564612031101,
+      "UpX": 0.39731003859512815,
+      "UpY": 0.88294759285892965,
+      "UpZ": 0.25009654435070738
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "5805edbfa62e4a3d847bba688005361b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 553.0,
+        "Y": 299.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "9bf351ae1bbd4dff9cc6df50ec72b249",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1099.7757066089887,
+        "Y": 240.20790364454083
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "695b3f8fb2bf4235900d5a4b03ac974b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1069.8694700755054,
+        "Y": 299.84463224544578
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "7f49b749154645ed809b8c0f31110884",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1093.8877438956097,
+        "Y": 366.55996440908683
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "5dac37b220b84602b5c1eb7e66a24c9e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1085.440764437797,
+        "Y": 428.18911100317439
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "0cdabbc93dff4372b4617246a5949430",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 261.88309145888473,
+        "Y": 301.50592740916136
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "244ffde02bed43c5a18fb02631a9f8af",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 703.5985787167092,
+        "Y": 299.72899507809643
+      }
+    ],
+    "Annotations": [],
+    "X": -2228.1465970891245,
+    "Y": -993.20738482554339,
+    "Zoom": 4.0
+  }
+}
