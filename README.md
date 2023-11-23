@@ -1,8 +1,8 @@
 # v-nodes (20221222)
 
-Several simple custom nodes for [Dynamo](https://dynamobim.org).
+![dynamo-nodes.png](img/dynamo-nodes.png)
 
-![title_img.png](img/title_img.png)
+Several simple custom nodes for [Dynamo](https://dynamobim.org).
 
 ## Installation
 
@@ -23,10 +23,8 @@ Several simple custom nodes for [Dynamo](https://dynamobim.org).
 - Linked elements selectors
 - etc.
 
+![dynamo-nodes1.png](img/dynamo-nodes1.png)
+
 ## License
 
 Distributed under the MIT License.
-
-## Contact
-
-Project Link: [https://github.com/vlmarch/dynamo-v-nodes](https://github.com/vlmarch/dynamo-v-nodes)
